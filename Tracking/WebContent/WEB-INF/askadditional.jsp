@@ -15,7 +15,7 @@
   <meta name="description" content="">
   <meta name="author" content="Dashboard">
   <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-  <title>Admin</title>
+  <title>zusätzlichen Dokumenten</title>
 
   <!-- Favicons -->
   <link href="img/favicon.png" rel="icon">
@@ -127,36 +127,36 @@
 </c:if>
             <div class="row mt">
           <div class="col-lg-12">
-            <h4><i class="fa fa-angle-right"></i>titleeeeee</h4>
+            <h4><i class="fa fa-angle-right"></i>Fragen Sie nach zusätzlichen Dokumenten</h4>
             <div class="form-panel">
               <div class=" form">
                 <form class="cmxform form-horizontal style-form" id="commentForm" method="post" action="sendrequest">
                   <div class="form-group ">
-                    <label for="cemail" class="control-label col-lg-2">Responsable name</label>
+                    <label for="cemail" class="control-label col-lg-2">Verantwortlicher Name</label>
                     <div class="col-lg-10">
                       <input class="form-control " type="text" readonly=""  name="namRespo"  value="${nomRespo }" required/>
                     </div>
                   </div>
                   <div class="form-group ">
-                    <label for="cemail" class="control-label col-lg-2">dosier numero</label>
+                    <label for="cemail" class="control-label col-lg-2">Dateinummer</label>
                     <div class="col-lg-10">
                       <input class="form-control " type="text" readonly=""  name="numTache" required value="${id_doc }" />
                     </div>
                   </div>
                   <div class="form-group ">
-                    <label for="cemail" class="control-label col-lg-2">Client name</label>
+                    <label for="cemail" class="control-label col-lg-2">Kundenname</label>
                     <div class="col-lg-10">
                       <input class="form-control " type="text" readonly=""  name="nomClient" required value="${nomClient }" />
                     </div>
                   </div>
                   <div class="form-group ">
-                    <label for="curl" class="control-label col-lg-2">Type de doc required</label>
+                    <label for="curl" class="control-label col-lg-2">Dokumenttyp erforderlich</label>
                     <div class="col-lg-10">
                       <input class="form-control " type="text" name="typedoc" required />
                     </div>
                   </div> 
                   <div class="form-group ">
-                    <label for="curl" class="control-label col-lg-2">date</label>
+                    <label for="curl" class="control-label col-lg-2">datiert</label>
                     <div class="col-lg-10">
                     <input class="form-control " type="date" name="datedoc"  required>
                     </div>

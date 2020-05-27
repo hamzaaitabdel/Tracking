@@ -8,7 +8,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Reset Password Form  Responsive Widget Template | Home :: w3layouts</title>
+<title>bestätigen</title>
 <!-- Custom Theme files -->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -20,10 +20,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <body>
 <!--element start here-->
 <div class="elelment">
-	<h2>Reset Password for ${email1 }</h2>
+	<h2>Passwort zurücksetzen für ${email1 }</h2>
 	<div class="element-main">
-		<h1>Forgot Password</h1>
-		<p> Nemo enim ${email1 } ipsam voluptatem quia voluptas sit aspernatur aut odit aut.</p>
+		<h1>Passwort vergessen</h1>
+		<p> hallo ${email1 }, Gib dein neues Passwort ein.</p>
 		<form method="POST" action="setNewPassword">
 		<p style="font-size: medium;">enter new password</p>
 			<input type="password" name="pass1" value="" >
@@ -35,7 +35,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</div>
 </div>
 <div class="copy-right">
-			<p>© 2016 Reset Password Form. All rights reserved | Template by  <a href="http://w3layouts.com/" target="_blank">  W3layouts </a></p>
 </div>
 <style>
 	/*--

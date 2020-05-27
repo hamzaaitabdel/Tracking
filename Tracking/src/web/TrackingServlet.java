@@ -109,7 +109,7 @@ public class TrackingServlet extends HttpServlet {
 		try{
 			session=request.getSession();
 			if(request.getServletPath().equals("/index.html")) {
-				request.getRequestDispatcher("WEB-INF/acceuilfreset.jsp").forward(request, response);
+				request.getRequestDispatcher("WEB-INF/acceuil.jsp").forward(request, response);
 			}
 			if(request.getServletPath().equals("/resetPassword")){
 				System.out.println("hahia");
@@ -188,16 +188,16 @@ public class TrackingServlet extends HttpServlet {
 						"        'Lucida Console', Monaco, monospace;\">hello Dear ,</span></p>\r\n" + 
 						"<p><span style=\"font-family:" + 
 						"        'Lucida Console', Monaco, monospace;\">Tracking "
-						+ "Service sent you this e-mail to inform you that we need &nbsp;&quot;"+add.getType()+"&quot;</span></p> "
+						+ "Der Service hat Ihnen diese E-Mail gesendet, um Sie dar&uuml;ber zu informieren, dass wir  &nbsp;&quot;"+add.getType()+"&quot;benv&ouml;tigen,</span></p> "
 						+
 						" <p><span style=\"font-family:" + 
 						"        'Lucida Console', Monaco, monospace;\"></span></p>" + 
 						"<p><span style=\"font-family: " + 
-						"        'Lucida Console', Monaco, monospace;\">to complete traitement of your Document N :"+add.getId_tache()+"</span></p>"
+						"        'Lucida Console', Monaco, monospace;\">um die Behandlung Ihres Dokuments abzuschlie&szlig;en N :"+add.getId_tache()+"</span></p>"
 						+ 
 								"<p><br></p>"+
 						"<blockquote>" + 
-						"    <p><strong><span style=\"font-size: 18px; background-color: rgb(184, 49, 47); color: rgb(239, 239, 239);\">The deadline for sending the document is :	"+add.getDate()+" <br></span></strong></p>" + 
+						"    <p><strong><span style=\"font-size: 18px; background-color: rgb(184, 49, 47); color: rgb(239, 239, 239);\">Die Frist f&uuml;r den Versand des Dokuments ist :	"+add.getDate()+" <br></span></strong></p>" + 
 						"</blockquote>" + 
 						"<div id=\"gtx-trans\" style=\"position: absolute; left: -44px; top: -2px;\">" + 
 						"    <div class=\"gtx-trans-icon\"><span style=\"font-size: " + 
@@ -213,7 +213,7 @@ public class TrackingServlet extends HttpServlet {
 				System.out.println("email akhay"+emailClient);
 				request.setAttribute("clientmail",emailClient);
 				request.setAttribute("bodyemail",body);
-				request.setAttribute("subject","Request to send additional documents in order to complete the treatment");
+				request.setAttribute("subject","eine Aufforderung, zus&auml;tzliche Dokumente zu senden, um die Behandlung abzuschließen");
 				System.out.println("confirmfinal");
 				request.getRequestDispatcher("WEB-INF/confirmrequest.jsp").forward(request, response);
 				
@@ -1588,11 +1588,11 @@ public class TrackingServlet extends HttpServlet {
 					int key=cl.getId_client();
 					request.setAttribute("key", key);
 					System.out.println("key="+key);
-					String subject="Reset your Tracking Service Password";
+					String subject="Passwort Trackin Service zurücksetzen";
 					String key2=key+"&email="+email;
 					String link="http://localhost:8080/Tracking/resetPassword?key="+key+"&email="+email;
-					String body="Hello Dear,\r\n"+
-					"To reset your password, click on the link below\r\n"+
+					String body="Hallo,\r\n"+
+					"Um Ihr Passwort zurückzusetzen, klicken Sie auf den unten stehenden Link\r\n"+
 					"http://localhost:8080/Tracking/resetPassword?key="+key+
 					"&email="+email;
 					String nameClient=cl.getNom();
@@ -1713,7 +1713,7 @@ public class TrackingServlet extends HttpServlet {
 							"                  <td width=\"270\" align=\"left\" style=\"padding:0;Margin:0;\"> \r\n" + 
 							"                   <table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" role=\"presentation\" style=\"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;\"> \r\n" + 
 							"                     <tr style=\"border-collapse:collapse;\"> \r\n" + 
-							"                      <td class=\"es-m-txt-c\" align=\"right\" style=\"padding:0;Margin:0;padding-top:10px;\"><span class=\"es-button-border\" style=\"border-style:solid;border-color:#3D5CA3;background:#FFFFFF;border-width:2px;display:inline-block;border-radius:10px;width:auto;\"><a href=\"http://localhost:8080/Tracking/index.html\" class=\"es-button\" target=\"_blank\" style=\"mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-size:14px;color:#3D5CA3;border-style:solid;border-color:#FFFFFF;border-width:15px 20px 15px 20px;display:inline-block;background:#FFFFFF;border-radius:10px;font-weight:bold;font-style:normal;line-height:17px;width:auto;text-align:center;\">Acceuil</a></span></td> \r\n" + 
+							"                      <td class=\"es-m-txt-c\" align=\"right\" style=\"padding:0;Margin:0;padding-top:10px;\"><span class=\"es-button-border\" style=\"border-style:solid;border-color:#3D5CA3;background:#FFFFFF;border-width:2px;display:inline-block;border-radius:10px;width:auto;\"><a href=\"http://localhost:8080/Tracking/index.html\" class=\"es-button\" target=\"_blank\" style=\"mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-size:14px;color:#3D5CA3;border-style:solid;border-color:#FFFFFF;border-width:15px 20px 15px 20px;display:inline-block;background:#FFFFFF;border-radius:10px;font-weight:bold;font-style:normal;line-height:17px;width:auto;text-align:center;\">Zuhause</a></span></td> \r\n" + 
 							"                     </tr> \r\n" + 
 							"                   </table></td> \r\n" + 
 							"                 </tr> \r\n" + 
@@ -1737,19 +1737,19 @@ public class TrackingServlet extends HttpServlet {
 							"                      <td align=\"center\" style=\"padding:0;Margin:0;padding-top:5px;padding-bottom:5px;font-size:0;\"><img src=\"https://ifnafg.stripocdn.email/content/guids/CABINET_dd354a98a803b60e2f0411e893c82f56/images/23891556799905703.png\" alt style=\"display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;\" width=\"175\"></td> \r\n" + 
 							"                     </tr> \r\n" + 
 							"                     <tr style=\"border-collapse:collapse;\"> \r\n" + 
-							"                      <td align=\"center\" style=\"padding:0;Margin:0;padding-top:15px;padding-bottom:15px;\"><h1 style=\"Margin:0;line-height:24px;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-size:20px;font-style:normal;font-weight:normal;color:#333333;\"><strong>FORGOT YOUR </strong></h1><h1 style=\"Margin:0;line-height:24px;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-size:20px;font-style:normal;font-weight:normal;color:#333333;\"><strong>&nbsp;PASSWORD?</strong></h1></td> \r\n" + 
+							"                      <td align=\"center\" style=\"padding:0;Margin:0;padding-top:15px;padding-bottom:15px;\"><h1 style=\"Margin:0;line-height:24px;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-size:20px;font-style:normal;font-weight:normal;color:#333333;\"><strong>VERGESSEN SIE IHRE </strong></h1><h1 style=\"Margin:0;line-height:24px;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-size:20px;font-style:normal;font-weight:normal;color:#333333;\"><strong>&nbsp;PASSWORD?</strong></h1></td> \r\n" + 
 							"                     </tr> \r\n" + 
 							"                     <tr style=\"border-collapse:collapse;\"> \r\n" + 
-							"                      <td align=\"center\" style=\"padding:0;Margin:0;padding-left:40px;padding-right:40px;\"><p style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:16px;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;line-height:24px;color:#666666;\">HI,"+nameClient+"</p></td> \r\n" + 
+							"                      <td align=\"center\" style=\"padding:0;Margin:0;padding-left:40px;padding-right:40px;\"><p style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:16px;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;line-height:24px;color:#666666;\">HALLO,"+nameClient+"</p></td> \r\n" + 
 							"                     </tr> \r\n" + 
 							"                     <tr style=\"border-collapse:collapse;\"> \r\n" + 
-							"                      <td align=\"center\" style=\"padding:0;Margin:0;padding-right:35px;padding-left:40px;\"><p style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:16px;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;line-height:24px;color:#666666;\">There was a request to change your password!</p></td> \r\n" + 
+							"                      <td align=\"center\" style=\"padding:0;Margin:0;padding-right:35px;padding-left:40px;\"><p style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:16px;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;line-height:24px;color:#666666;\">Es wurde darum gebeten, Ihr Passwort zu ändern!</p></td> \r\n" + 
 							"                     </tr> \r\n" + 
 							"                     <tr style=\"border-collapse:collapse;\"> \r\n" + 
-							"                      <td align=\"center\" style=\"padding:0;Margin:0;padding-top:25px;padding-left:40px;padding-right:40px;\"><p style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:16px;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;line-height:24px;color:#666666;\">If did not make this request, just ignore this email. Otherwise, please click the button below to change your password:</p></td> \r\n" + 
+							"                      <td align=\"center\" style=\"padding:0;Margin:0;padding-top:25px;padding-left:40px;padding-right:40px;\"><p style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:16px;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;line-height:24px;color:#666666;\">Wenn Sie diese Anfrage nicht gestellt haben, ignorieren Sie diese E-Mail einfach. Andernfalls klicken Sie bitte auf die Schaltfläche unten, um Ihr Passwort zu ändern:</p></td> \r\n" + 
 							"                     </tr> \r\n" + 
 							"                     <tr style=\"border-collapse:collapse;\"> \r\n" + 
-							"                      <td align=\"center\" style=\"Margin:0;padding-left:10px;padding-right:10px;padding-top:40px;padding-bottom:40px;\"><span class=\"es-button-border\" style=\"border-style:solid;border-color:#3D5CA3;background:#FFFFFF;border-width:2px;display:inline-block;border-radius:10px;width:auto;\"><a href=\""+link+"\" class=\"es-button\" target=\"_blank\" style=\"mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-size:14px;color:#3D5CA3;border-style:solid;border-color:#FFFFFF;border-width:15px 20px 15px 20px;display:inline-block;background:#FFFFFF;border-radius:10px;font-weight:bold;font-style:normal;line-height:17px;width:auto;text-align:center;\">RESET PASSWORD</a></span></td> \r\n" + 
+							"                      <td align=\"center\" style=\"Margin:0;padding-left:10px;padding-right:10px;padding-top:40px;padding-bottom:40px;\"><span class=\"es-button-border\" style=\"border-style:solid;border-color:#3D5CA3;background:#FFFFFF;border-width:2px;display:inline-block;border-radius:10px;width:auto;\"><a href=\""+link+"\" class=\"es-button\" target=\"_blank\" style=\"mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-size:14px;color:#3D5CA3;border-style:solid;border-color:#FFFFFF;border-width:15px 20px 15px 20px;display:inline-block;background:#FFFFFF;border-radius:10px;font-weight:bold;font-style:normal;line-height:17px;width:auto;text-align:center;\">Passwort zurücksetzen</a></span></td> \r\n" + 
 							"                     </tr> \r\n" + 
 							"                   </table></td> \r\n" + 
 							"                 </tr> \r\n" + 
@@ -1797,7 +1797,7 @@ public class TrackingServlet extends HttpServlet {
 							"                  <td width=\"560\" valign=\"top\" align=\"center\" style=\"padding:0;Margin:0;\"> \r\n" + 
 							"                   <table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" role=\"presentation\" style=\"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;\"> \r\n" + 
 							"                     <tr style=\"border-collapse:collapse;\"> \r\n" + 
-							"                      <td align=\"center\" style=\"padding:0;Margin:0;\"><p style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;line-height:21px;color:#666666;\">Contact us: <a target=\"_blank\" style=\"-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;font-size:14px;text-decoration:none;color:#666666;\" href=\"tel:123456789\">123456789</a> | <a target=\"_blank\" href=\"mailto:your@mail.com\" style=\"-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;font-size:14px;text-decoration:none;color:#666666;\">your@mail.com</a></p></td> \r\n" + 
+							"                      <td align=\"center\" style=\"padding:0;Margin:0;\"><p style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;line-height:21px;color:#666666;\">Contact us: <a target=\"_blank\" style=\"-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;font-size:14px;text-decoration:none;color:#666666;\" href=\"tel:123456789\">123456789</a> | <a target=\"_blank\" href=\"mailto:trackingService@mail.com\" style=\"-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;font-size:14px;text-decoration:none;color:#666666;\">your@mail.com</a></p></td> \r\n" + 
 							"                     </tr> \r\n" + 
 							"                   </table></td> \r\n" + 
 							"                 </tr> \r\n" + 

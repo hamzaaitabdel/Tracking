@@ -8,7 +8,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Reset Password Form </title>
+<title>Passwortformular zurücksetzen </title>
 <!-- Custom Theme files -->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -20,10 +20,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <body>
 <!--element start here-->
 <div class="elelment">
-	<h2>Reset Password Form</h2>
+	<h2>Passwort zurücksetzen </h2>
 	<div class="element-main">
-		<h1>Forgot Password</h1>
-		<p> Enter your Email to get reset-password link.</p>
+		<h1>Passwort vergessen</h1>
+		<p> Geben Sie Ihre E-Mail-Adresse ein, um den Link zum Zurücksetzen des Passworts zu erhalten.</p>
 		<form method="POST" action="sendrecovery">
 			<input type="email" name="emailrecovery" value="" >
 			<label>${sentmsg }</label>
@@ -32,7 +32,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</div>
 </div>
 <div class="copy-right">
-			<p>© 2016 Reset Password Form. All rights reserved | Template by  <a href="http://w3layouts.com/" target="_blank">  W3layouts </a></p>
 </div>
 <style>
 	/*--
