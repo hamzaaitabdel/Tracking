@@ -9,7 +9,7 @@ import java.util.List;
 import entities.Responsable;
 
 public interface IResponsable {
-
+    int OnlineCount();
 	Responsable getRespo(String mail, String mdp);
 	boolean login(String mail, String mdp);
 	public void addRespo(Responsable r);

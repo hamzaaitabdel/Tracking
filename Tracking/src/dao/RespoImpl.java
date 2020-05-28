@@ -32,6 +32,11 @@ import entities.Responsable;
 public class RespoImpl implements IResponsable {
 
 @Override
+	public int OnlineCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+@Override
 public int countRepoTache() {
 	Connection conn=DBconnect.getConnection();
 	int cp=0;
@@ -42,6 +47,7 @@ public int countRepoTache() {
 			cp=rs.getInt("countr");
 		}
 		st.close();
+		System.out.println("habe einen aktuellen tache="+cp);
 	} catch (SQLException e) {
 		e.printStackTrace();
 	}

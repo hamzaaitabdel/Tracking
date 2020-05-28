@@ -17,6 +17,26 @@ import entities.Tache;
 public class ClientImpl implements IClient{
 	
 	@Override
+	public int getPremiumCount() {
+		// TODO Auto-generated method stub
+          Connection conn=DBconnect.getConnection();
+		  int count=0;
+		try {
+			PreparedStatement st=conn.prepareStatement("select * from Client where premium=?");
+			st.setBoolean(1, true);
+			ResultSet rs=st.executeQuery();
+			while(rs.next()){
+				count++;
+			}
+			st.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+System.out.println("lcount akhay="+count);
+		return count;
+	}
+
+	@Override
 	public void addClient(Client c) {
 		Connection conn=DBconnect.getConnection();
 		try {

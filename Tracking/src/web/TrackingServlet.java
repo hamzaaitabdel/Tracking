@@ -242,6 +242,10 @@ public class TrackingServlet extends HttpServlet {
 				int nbrResponsableTache=respoDAO.countRepoTache();
 				int registredClient=clientDAO.ListClient().size();
 				int totalClient = dossierDAO.getAllclient();
+				int premiumAccount=clientDAO.getPremiumCount();
+				
+				int RespoHasTacheCount =respoDAO.countRepoTache();
+				System.out.println("habe einen aktuellen tache=");
 				System.out.println("total client :"+totalClient);
 				request.setAttribute("admin",a);
 				for(Graphinfo d :infos) {
@@ -282,6 +286,8 @@ public class TrackingServlet extends HttpServlet {
 					
 				}
 				request.setAttribute("graphData", infos);
+				request.setAttribute("RespoHasTacheCount", RespoHasTacheCount);
+			    request.setAttribute("premiumAccounts", premiumAccount);
 				request.setAttribute("total", total);
 				request.setAttribute("nbrDossier",nbrDossier);
 				request.setAttribute("nbrResponsable",nbrResponsable);
@@ -1941,13 +1947,13 @@ public class TrackingServlet extends HttpServlet {
 					 String pass = PASSWORD;
 					respoDAO.sendFromGMail(from, pass,email, subject, body3);
 					System.out.println("email sent !!");
-					request.setAttribute("sentmsg", "Password recovery link sent to your E-mail ");
+					request.setAttribute("sentmsg", "Ein Link zur Passwortwiederherstellung wurde an Ihre E-Mail gesendet. ");
 					request.getRequestDispatcher("WEB-INF/forgotpassword.jsp").forward(request, response);
 
 				}
 				else {
 					System.out.println("email introuvable");
-					request.setAttribute("sentmsg", "email introuvable ");
+					request.setAttribute("sentmsg", "Email wurde nicht gefunden ");
 					request.getRequestDispatcher("WEB-INF/forgotpassword.jsp").forward(request, response);
 				}
 			}

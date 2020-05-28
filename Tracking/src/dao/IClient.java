@@ -5,6 +5,7 @@ import java.util.List;
 import entities.Client;
 
 public interface IClient {
+	public int getPremiumCount();
 	public void addClient(Client c);
 	public Client getClient(String id_c);
 	public boolean login(String email, String mdp);

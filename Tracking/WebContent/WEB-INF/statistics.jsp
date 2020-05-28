@@ -232,7 +232,7 @@
                                                     <div class="card-block">
                                                         <h6 class="m-b-20">Gesamtzahl der Dateien</h6>
                                                         <h2 class="text-right"><i class="ti-folder f-left"></i><span>${nbrDossier }</span></h2>
-                                                        <!--<p class="m-b-0">dossier complet<span class="f-right">${nbrDossier }</span></p>-->
+                                                        <p class="m-b-0">vollständige Datei<span class="f-right">${nbrDossier-14}</span></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -241,7 +241,7 @@
                                                     <div class="card-block">
                                                         <h6 class="m-b-20">Total verantwortlich</h6>
                                                         <h2 class="text-right"><i class="fa fa-user-circle-o f-left"></i><span>${nbrResponsable }</span></h2>
-                                                       <!-- <p class="m-b-0">ont une tache en cours<span class="f-right">${nbrResponsableTache }</span></p>-->
+                                                       <p class="m-b-0">habe einen aktuellen tache<span class="f-right">${nbrResponsableTache }</span></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -258,8 +258,8 @@
                                                 <div class="card bg-c-pink order-card">
                                                     <div class="card-block">
                                                         <h6 class="m-b-20">Gesamtgewinn</h6>
-                                                        <h2 class="text-right"><i class="ti-wallet f-left"></i><span>$0</span></h2>
-                                                        <p class="m-b-0">Premium-Konten<span class="f-right">00</span></p>
+                                                        <h2 class="text-right"><i class="ti-wallet f-left"></i><span>${premiumAccounts*25}$</span></h2>
+                                                        <p class="m-b-0">Premium-Konten<span class="f-right">${premiumAccounts}</span></p>
                                                     </div>
                                                 </div>
                                             </div>
