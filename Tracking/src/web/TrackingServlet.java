@@ -778,6 +778,8 @@ public class TrackingServlet extends HttpServlet {
 		
 		
 		if(request.getServletPath().equals("/ajoutDoc")) {
+			String tracking = dossierDAO.getIdRandom(6);
+			request.setAttribute("tracking", tracking);
 			request.getRequestDispatcher("WEB-INF/addDoc.jsp").forward(request, response);
 		}
 		
@@ -2439,7 +2441,7 @@ if(request.getServletPath().equals("/sendrequest")) {
 		
 		if(request.getServletPath().equals("/ajoutDoc")) {
 			try {
-				String idDoc = request.getParameter("id_doc");	
+				String idDoc = request.getParameter("tracking");	
 				String nomCl = request.getParameter("nom_cl");
 				String emailCl = request.getParameter("email_cl");
 				String type = request.getParameter("type"); 

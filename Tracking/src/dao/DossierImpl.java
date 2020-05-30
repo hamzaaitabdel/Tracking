@@ -14,6 +14,7 @@ import entities.Client;
 import entities.Dossier;
 
 public class DossierImpl implements IDossier {
+	
 	@Override
 	public String getEmail(int id_doc) {
 		String email = "not found";

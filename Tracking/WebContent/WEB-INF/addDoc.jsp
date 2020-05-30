@@ -135,7 +135,7 @@
                   <div class="form-group ">
                     <label for="cname" class="control-label col-lg-2"> Auftragsnummer</label>
                     <div class="col-lg-10">
-                      <input class=" form-control" name="tracking" type="text" value="${tracking}" required />
+                      <input class=" form-control" name="tracking" type="text" readonly="" value="${tracking}" required />
                     </div>
                       </div>
                       
