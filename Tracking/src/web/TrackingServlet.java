@@ -1,7 +1,6 @@
 package web;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.sql.Blob;
@@ -40,6 +39,7 @@ import dao.RespoImpl;
 import dao.STIMPL;
 import dao.SavedImpl;
 import dao.TacheImpl;
+import dao.sms;
 import entities.AdditionalDoc;
 import entities.Admin;
 import entities.Client;
@@ -53,8 +53,7 @@ import entities.Saved;
 import entities.SousTache;
 import entities.Tache;
 
-
-
+import java.net.*;
 
 @WebServlet({"/Acceuil","/Admin","/Respo","/tacheApprouver","/tacheEnCours","/tacheFinis",
 	"/ajoutDoc","/ajoutRespo","/ajoutTache","/login","/deconnexion",
@@ -219,7 +218,7 @@ public class TrackingServlet extends HttpServlet {
 				
 			}
 			if(request.getServletPath().equals("/deconnexionRespo")) {
-				Responsable r= (Responsable) request.getSession().getAttribute("session");
+				Responsable r= (Responsable) request.getSession().getAttribute("respo");
 				respoDAO.online(false,r.getId_respo());
 				session = request.getSession();
 				session.invalidate();
@@ -307,6 +306,36 @@ public class TrackingServlet extends HttpServlet {
 			}
 			
 			if(request.getServletPath().equals("/loginAdmin")) {
+				try {
+                    String recipient = "+19032255358";
+                    String message = "Hello World";
+                    String username = "admin";
+                    String password = "7440midelt";
+                    String originator = "06201234567";
+                    String requestUrl  = "http://127.0.0.1:9501/api?action=sendmessage&" +
+                    		"username=" + URLEncoder.encode(username, "UTF-8") +
+                    		"&password=" + URLEncoder.encode(password, "UTF-8") +
+                    		"&recipient=" + URLEncoder.encode(recipient, "UTF-8") +
+                    		"&messagetype=SMS:TEXT" +
+                    		"&messagedata=" + URLEncoder.encode(message, "UTF-8") +
+                    		"&originator=" + URLEncoder.encode(originator, "UTF-8") +
+                    		"&serviceprovider=HTTPServer0" +
+                    		"&responseformat=html";
+                    
+
+
+                    URL url = new URL(requestUrl);
+                    HttpURLConnection uc = (HttpURLConnection)url.openConnection();
+
+                    System.out.println("msg http= "+uc.getResponseMessage());
+
+                    uc.disconnect();
+
+            } catch(Exception ex) {
+                    System.out.println(ex.getMessage());
+
+            }
+    
 				request.getRequestDispatcher("WEB-INF/loginAdmin.jsp").forward(request, response);
 			}
 			
@@ -538,7 +567,7 @@ public class TrackingServlet extends HttpServlet {
 				String nom_respo=respo.getNom();
 				messenger.setNom_respo(nom_respo);
 			}
-			Responsable utilisateur = (Responsable) request.getSession().getAttribute("session");
+			Responsable utilisateur = (Responsable) request.getSession().getAttribute("respo");
 			int id_respooo = utilisateur.getId_respo();
 			List<Responsable> respo =  respoDAO.ListRespoMessage(idD);
 			request.setAttribute("respo", respo);	
@@ -579,7 +608,7 @@ public class TrackingServlet extends HttpServlet {
 		
 		
 		if(request.getServletPath().equals("/listMessenger")) {
-			Responsable utilisateurrrr = (Responsable) request.getSession().getAttribute("session");
+			Responsable utilisateurrrr = (Responsable) request.getSession().getAttribute("respo");
 			int id_respooo = utilisateurrrr.getId_respo();
 			List<Dossier> doc =  dossierDAO.ListDossierRespo(id_respooo);
 			request.setAttribute("dossier", doc);
@@ -623,7 +652,7 @@ public class TrackingServlet extends HttpServlet {
 				String nom_respo=respo.getNom();
 				messenger.setNom_respo(nom_respo);
 			}
-			Responsable utilisateur = (Responsable) request.getSession().getAttribute("session");
+			Responsable utilisateur = (Responsable) request.getSession().getAttribute("respo");
 			int id_respooo = utilisateur.getId_respo();
 			List<Responsable> respo =  respoDAO.ListRespoMessage(idD);
 			request.setAttribute("respo", respo);	
@@ -637,7 +666,7 @@ public class TrackingServlet extends HttpServlet {
 			Responsable respoo = respoDAO.getRespo(String.valueOf(idR));
 			request.setAttribute("responsable", respoo);
 			//Header listes
-			Responsable utilisateurrrr = (Responsable) request.getSession().getAttribute("session");
+			Responsable utilisateurrrr = (Responsable) request.getSession().getAttribute("respo");
 			List<Tache> tachApr =  tacheDAO.ListTacheRespoApprouver(id_respooo);
 			request.setAttribute("tachApr", tachApr);
 			List<Tache> tachEC =  tacheDAO.ListTacheRespoEnCours(id_respooo);
@@ -687,12 +716,12 @@ public class TrackingServlet extends HttpServlet {
 			int total = STDAO.NumST(Integer.parseInt(id_tache));
 			request.setAttribute("total", total);
 			//chargement de liste Dossier
-			Responsable utilisateur = (Responsable) request.getSession().getAttribute("session");
+			Responsable utilisateur = (Responsable) request.getSession().getAttribute("respo");
 			int idR = utilisateur.getId_respo();
 			Responsable respo = respoDAO.getRespo(String.valueOf(idR));
 			request.setAttribute("responsable", respo);
 			//Header listes
-			Responsable utilisateurrrr = (Responsable) request.getSession().getAttribute("session");
+			Responsable utilisateurrrr = (Responsable) request.getSession().getAttribute("respo");
 			int id_respooo = utilisateurrrr.getId_respo();
 			List<Tache> tachApr =  tacheDAO.ListTacheRespoApprouver(id_respooo);
 			request.setAttribute("tachApr", tachApr);
@@ -747,12 +776,12 @@ public class TrackingServlet extends HttpServlet {
 			Tache tachtacha = tacheDAO.getOneOneTache(Integer.parseInt(id_tache));
 			request.setAttribute("tache", tachtacha);
 			//chargement de liste Dossier
-			Responsable utilisateur = (Responsable) request.getSession().getAttribute("session");
+			Responsable utilisateur = (Responsable) request.getSession().getAttribute("respo");
 			int idR = utilisateur.getId_respo();
 			Responsable respo = respoDAO.getRespo(String.valueOf(idR));
 			request.setAttribute("responsable", respo);
 			//Header listes
-			Responsable utilisateurrrr = (Responsable) request.getSession().getAttribute("session");
+			Responsable utilisateurrrr = (Responsable) request.getSession().getAttribute("respo");
 			int id_respooo = utilisateurrrr.getId_respo();
 			List<Tache> tachApr =  tacheDAO.ListTacheRespoApprouver(id_respooo);
 			request.setAttribute("tachApr", tachApr);
@@ -778,8 +807,10 @@ public class TrackingServlet extends HttpServlet {
 		
 		
 		if(request.getServletPath().equals("/ajoutDoc")) {
-			String tracking = dossierDAO.getIdRandom(6);
+			String tracking = dossierDAO.getIdRandom(6,true);
+			int id_doc=Integer.parseInt(dossierDAO.getIdRandom(6,false));
 			request.setAttribute("tracking", tracking);
+			request.setAttribute("id_doc", id_doc);
 			request.getRequestDispatcher("WEB-INF/addDoc.jsp").forward(request, response);
 		}
 		
@@ -802,7 +833,7 @@ public class TrackingServlet extends HttpServlet {
 		//-------------------------------------------
 		
 		if(request.getServletPath().equals("/Respo")) {
-			Responsable utilisateurConnecte = (Responsable) request.getSession().getAttribute("session");
+			Responsable utilisateurConnecte = (Responsable) request.getSession().getAttribute("respo");
 			int id_respo = utilisateurConnecte.getId_respo();
 			session.setAttribute("session", utilisateurConnecte);
 			String id= Integer.toString(id_respo);
@@ -812,7 +843,7 @@ public class TrackingServlet extends HttpServlet {
 			List<Tache> tach =  tacheDAO.ListTacheRespo(id_respo);
 			request.setAttribute("tache", tach);
 			//Header listes
-			Responsable utilisateurrrr = (Responsable) request.getSession().getAttribute("session");
+			Responsable utilisateurrrr = (Responsable) request.getSession().getAttribute("respo");
 			int id_respooo = utilisateurrrr.getId_respo();
 			List<Tache> tachApr =  tacheDAO.ListTacheRespoApprouver(id_respooo);
 			request.setAttribute("tachApr", tachApr);
@@ -847,13 +878,13 @@ public class TrackingServlet extends HttpServlet {
 		
 		
 		if(request.getServletPath().equals("/tacheApprouver")) {
-			Responsable utilisateur = (Responsable) request.getSession().getAttribute("session");
+			Responsable utilisateur = (Responsable) request.getSession().getAttribute("respo");
 			int id_respo = utilisateur.getId_respo();
 			request.setAttribute("responsable", utilisateur);
 			List<Tache> tachee =  tacheDAO.ListTacheRespoApprouver(id_respo);
 			request.setAttribute("tache", tachee);
 			//Header listes
-			Responsable utilisateurrrr = (Responsable) request.getSession().getAttribute("session");
+			Responsable utilisateurrrr = (Responsable) request.getSession().getAttribute("respo");
 			int id_respooo = utilisateurrrr.getId_respo();
 			List<Tache> tachApr =  tacheDAO.ListTacheRespoApprouver(id_respooo);
 			request.setAttribute("tachApr", tachApr);
@@ -879,14 +910,14 @@ public class TrackingServlet extends HttpServlet {
 		
 		
 		if(request.getServletPath().equals("/tacheEnCours")) {
-			Responsable utilisateur = (Responsable) request.getSession().getAttribute("session");
+			Responsable utilisateur = (Responsable) request.getSession().getAttribute("respo");
 			int id_respo = utilisateur.getId_respo();
 			session.setAttribute("session", utilisateur);
 			request.setAttribute("responsable", utilisateur);
 			List<Tache> tach =  tacheDAO.ListTacheRespoEnCours(id_respo);
 			request.setAttribute("tache", tach);
 			//Header listes
-			Responsable utilisateurrrr = (Responsable) request.getSession().getAttribute("session");
+			Responsable utilisateurrrr = (Responsable) request.getSession().getAttribute("respo");
 			int id_respooo = utilisateurrrr.getId_respo();
 			List<Tache> tachApr =  tacheDAO.ListTacheRespoApprouver(id_respooo);
 			request.setAttribute("tachApr", tachApr);
@@ -911,7 +942,7 @@ public class TrackingServlet extends HttpServlet {
 		}
 		
 		if(request.getServletPath().equals("/tacheVenir")) {
-			Responsable utilisateur = (Responsable) request.getSession().getAttribute("session");
+			Responsable utilisateur = (Responsable) request.getSession().getAttribute("respo");
 			int id_respo = utilisateur.getId_respo();
 			session.setAttribute("session", utilisateur);
 			request.setAttribute("responsable", utilisateur);
@@ -920,7 +951,7 @@ public class TrackingServlet extends HttpServlet {
 			
 			
 			//Header listes
-			Responsable utilisateurrrr = (Responsable) request.getSession().getAttribute("session");
+			Responsable utilisateurrrr = (Responsable) request.getSession().getAttribute("respo");
 			int id_respooo = utilisateurrrr.getId_respo();
 			List<Tache> tachApr =  tacheDAO.ListTacheRespoApprouver(id_respooo);
 			request.setAttribute("tachApr", tachApr);
@@ -946,14 +977,14 @@ public class TrackingServlet extends HttpServlet {
 		}
 		
 		if(request.getServletPath().equals("/tacheFinis")) {
-			Responsable utilisateur = (Responsable) request.getSession().getAttribute("session");
+			Responsable utilisateur = (Responsable) request.getSession().getAttribute("respo");
 			int id_respo = utilisateur.getId_respo();
 			session.setAttribute("session", utilisateur);
 			request.setAttribute("responsable", utilisateur);
 			List<Ended> tach =  endedDAO.ListTachat(id_respo);
 			request.setAttribute("tache", tach);
 			//Header listes
-			Responsable utilisateurrrr = (Responsable) request.getSession().getAttribute("session");
+			Responsable utilisateurrrr = (Responsable) request.getSession().getAttribute("respo");
 			int id_respooo = utilisateurrrr.getId_respo();
 			List<Tache> tachApr =  tacheDAO.ListTacheRespoApprouver(id_respooo);
 			request.setAttribute("tachApr", tachApr);
@@ -1036,7 +1067,7 @@ public class TrackingServlet extends HttpServlet {
 			request.setAttribute("succes", "Die Bemerkung wurde gelöscht.");
 			//charger les listes
 
-			Responsable utilisateurConnecte = (Responsable) request.getSession().getAttribute("session");
+			Responsable utilisateurConnecte = (Responsable) request.getSession().getAttribute("respo");
 			int id_respo = utilisateurConnecte.getId_respo();
 			String id= Integer.toString(id_respo);
 			Responsable respo = respoDAO.getRespo(id);
@@ -1045,7 +1076,7 @@ public class TrackingServlet extends HttpServlet {
 			List<Tache> tach =  tacheDAO.ListTacheRespo(id_respo);
 			request.setAttribute("tache", tach);
 			//Header listes
-			Responsable utilisateurrrr = (Responsable) request.getSession().getAttribute("session");
+			Responsable utilisateurrrr = (Responsable) request.getSession().getAttribute("respo");
 			int id_respooo = utilisateurrrr.getId_respo();
 			List<Tache> tachApr =  tacheDAO.ListTacheRespoApprouver(id_respooo);
 			request.setAttribute("tachApr", tachApr);
@@ -1171,6 +1202,7 @@ public class TrackingServlet extends HttpServlet {
 		
 		
 		if(request.getServletPath().equals("/progression")) {
+			System.out.println("prog1");
 			try {
 			String idTache = request.getParameter("tracking");
 			List<Tache> tach=tacheDAO.getTache(idTache);
@@ -1339,7 +1371,7 @@ public class TrackingServlet extends HttpServlet {
 			String idTache = request.getParameter( "id_tache" );
 			String date_Debut = request.getParameter( "date_debut" );
 			
-			Responsable utilisateur = (Responsable) request.getSession().getAttribute("session");
+			Responsable utilisateur = (Responsable) request.getSession().getAttribute("respo");
 			int idR = utilisateur.getId_respo();
 			int idT=Integer.parseInt(idTache);
 			int idD=Integer.parseInt(idDoc);
@@ -1432,7 +1464,7 @@ public class TrackingServlet extends HttpServlet {
 			List<Tache> tach =  tacheDAO.ListTacheRespo(idR);
 			request.setAttribute("tache", tach);
 			//Header listes
-			Responsable utilisateurrrr = (Responsable) request.getSession().getAttribute("session");
+			Responsable utilisateurrrr = (Responsable) request.getSession().getAttribute("respo");
 			int id_respooo = utilisateurrrr.getId_respo();
 			List<Tache> tachApr =  tacheDAO.ListTacheRespoApprouver(id_respooo);
 			request.setAttribute("tachApr", tachApr);
@@ -1467,7 +1499,7 @@ public class TrackingServlet extends HttpServlet {
 			request.setAttribute("succes", "Vous avez approuvé le Dossier ("+tachtacha.getId_doc()+")");
 			request.setAttribute("erreur", "Rappel: Dernier délai: ("+tachtacha.getDateFin()+")");
 			//chargement du responsable de la session et le envoyer 
-			Responsable utilisateur = (Responsable) request.getSession().getAttribute("session");
+			Responsable utilisateur = (Responsable) request.getSession().getAttribute("respo");
 			int idR = utilisateur.getId_respo();
 			Responsable respo = respoDAO.getRespo(String.valueOf(idR));
 			request.setAttribute("responsable", respo);
@@ -1475,7 +1507,7 @@ public class TrackingServlet extends HttpServlet {
 			List<Tache> tach =  tacheDAO.ListTacheRespo(idR);
 			request.setAttribute("tache", tach);
 			//Header listes
-			Responsable utilisateurrrr = (Responsable) request.getSession().getAttribute("session");
+			Responsable utilisateurrrr = (Responsable) request.getSession().getAttribute("respo");
 			int id_respooo = utilisateurrrr.getId_respo();
 			List<Tache> tachApr =  tacheDAO.ListTacheRespoApprouver(id_respooo);
 			request.setAttribute("tachApr", tachApr);
@@ -1523,7 +1555,7 @@ public class TrackingServlet extends HttpServlet {
 			request.setAttribute("date_Debut",date_Debut);
 
 			//Header listes
-			Responsable utilisateurrrr = (Responsable) request.getSession().getAttribute("session");
+			Responsable utilisateurrrr = (Responsable) request.getSession().getAttribute("respo");
 			int id_respooo = utilisateurrrr.getId_respo();
 			request.setAttribute("responsable", utilisateurrrr);
 			List<Tache> tachApr =  tacheDAO.ListTacheRespoApprouver(id_respooo);
@@ -2011,13 +2043,13 @@ if(request.getServletPath().equals("/sendrequest")) {
 							session = request.getSession();
 							Responsable utilisateur = respoDAO.getRespo(email, password);
 							respoDAO.online(true, utilisateur.getId_respo());
-							session.setAttribute("session", utilisateur);
+							session.setAttribute("respo", utilisateur);
 							List<Tache> tach =  tacheDAO.ListTacheRespo(utilisateur.getId_respo());
 							request.setAttribute("responsable", utilisateur);
 							request.setAttribute("tache", tach);
 							request.setAttribute("succes", "Willkommen "+ utilisateur.getNom() + "! Sie haben sich authentifiziert");
 							if(session != null){
-							Responsable utilisateurConnecte = (Responsable) request.getSession().getAttribute("session");
+							Responsable utilisateurConnecte = (Responsable) request.getSession().getAttribute("respo");
 							int id_respoo = utilisateurConnecte.getId_respo();
 							respoDAO.online(true, id_respoo);
 							List<Tache> tachApr =  tacheDAO.ListTacheRespoApprouver(id_respoo);
@@ -2329,7 +2361,7 @@ if(request.getServletPath().equals("/sendrequest")) {
 			}
 			
 			//Header listes
-			Responsable utilisateurrrr = (Responsable) request.getSession().getAttribute("session");
+			Responsable utilisateurrrr = (Responsable) request.getSession().getAttribute("respo");
 			request.setAttribute("responsable", utilisateurrrr);
 			int id_respooo = utilisateurrrr.getId_respo();
 			List<Tache> tachApr =  tacheDAO.ListTacheRespoApprouver(id_respooo);
@@ -2356,15 +2388,17 @@ if(request.getServletPath().equals("/sendrequest")) {
 			request.setAttribute("tache", tach);
 			request.getRequestDispatcher("WEB-INF/respo.jsp").forward(request, response);	
 	}
-		
 		if(request.getServletPath().equals("/progression")) {
+			System.out.println("prog2");
 			try {
 			String idTache = request.getParameter("tracking");
 			List<Tache> tach=tacheDAO.getTache(idTache);
 			if(tach.isEmpty()){
+				System.out.println("prog2=empty");
 				request.setAttribute("erreur", "Keine Datei, die zu dieser Trackingnummer passt ("+idTache+") ");
 				request.getRequestDispatcher("WEB-INF/acceuil.jsp").forward(request, response);
 			}else{
+				System.out.println("prog2=full");
 			request.setAttribute("tache", tach);
 			String nom_cl = tach.get(0).getD_nom_cl();
 			int id_doc = tach.get(0).getId_doc();
@@ -2441,15 +2475,17 @@ if(request.getServletPath().equals("/sendrequest")) {
 		
 		if(request.getServletPath().equals("/ajoutDoc")) {
 			try {
-				String idDoc = request.getParameter("tracking");	
+				int idDoc = Integer.parseInt(request.getParameter("id_doc"));
+				String tracking =request.getParameter("tracking");
 				String nomCl = request.getParameter("nom_cl");
 				String emailCl = request.getParameter("email_cl");
 				String type = request.getParameter("type"); 
 				
-				Dossier nouveauDossier = new Dossier(Integer.parseInt(idDoc),nomCl,type,0);
+				Dossier nouveauDossier = new Dossier(idDoc,nomCl,type,0);
+				nouveauDossier.setTracking(tracking);
 				dossierDAO.addDossier(nouveauDossier);
 				
-				Clientmail cm = new Clientmail(Integer.parseInt(idDoc),emailCl);
+				Clientmail cm = new Clientmail(idDoc,emailCl);
 				clientmailDAO.addCm(cm);
 				 
 
@@ -2492,7 +2528,7 @@ if(request.getServletPath().equals("/sendrequest")) {
 				}else{
 					Uhr= hr+":"+min;
 				}
-				Messenger msg = new Messenger(Integer.parseInt(idDoc),0,message, null,Uhr);
+				Messenger msg = new Messenger(idDoc,0,message, null,Uhr);
 				messageDAO.addMsgRespo(msg);
 			} catch (Exception e) {
 				request.setAttribute("erreur", "Bitte überprüfen Sie, ob Sie die Formularfelder korrekt ausgefüllt haben! ");
@@ -2529,7 +2565,7 @@ if(request.getServletPath().equals("/sendrequest")) {
 			STDAO.addST(nouvelleST);
 			
 			//affichage des listes
-			Responsable utilisateurConnecte = (Responsable) request.getSession().getAttribute("session");
+			Responsable utilisateurConnecte = (Responsable) request.getSession().getAttribute("respo");
 			int id_respo = utilisateurConnecte.getId_respo();
 			String id= Integer.toString(id_respo);
 			Responsable respo = respoDAO.getRespo(id);
@@ -2543,7 +2579,7 @@ if(request.getServletPath().equals("/sendrequest")) {
 			request.getRequestDispatcher("WEB-INF/addST.jsp").forward(request, response);
 		} finally {
 			//Header listes
-			Responsable utilisateurrrr = (Responsable) request.getSession().getAttribute("session");
+			Responsable utilisateurrrr = (Responsable) request.getSession().getAttribute("respo");
 			
 			int id_respooo = utilisateurrrr.getId_respo();
 			List<Tache> tachApr =  tacheDAO.ListTacheRespoApprouver(id_respooo);
@@ -2773,7 +2809,7 @@ if(request.getServletPath().equals("/sendrequest")) {
 						request.setAttribute("tache", tach);
 						request.setAttribute("succes", "Willkommen "+ utilisateur.getNom() + "! Sie haben sich authentifiziert");
 						if(session != null){
-						Responsable utilisateurConnecte = (Responsable) request.getSession().getAttribute("session");
+						Responsable utilisateurConnecte = (Responsable) request.getSession().getAttribute("respo");
 						int id_respoo = utilisateurConnecte.getId_respo();
 						List<Tache> tachApr =  tacheDAO.ListTacheRespoApprouver(id_respoo);
 						request.setAttribute("tachApr", tachApr);
@@ -3125,7 +3161,7 @@ if(request.getServletPath().equals("/sendrequest")) {
 		request.setAttribute("erreur", "Es wurde ein Fehler gemacht.");
 		System.out.println("error do post: "+e.getMessage());
 
-		request.getRequestDispatcher("WEB-INF/404.jsp").forward(request, response);
+		//request.getRequestDispatcher("WEB-INF/404.jsp").forward(request, response);
 	}
 //---------------------	
 	}

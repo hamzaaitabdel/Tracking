@@ -138,7 +138,12 @@
                       <input class=" form-control" name="tracking" type="text" readonly="" value="${tracking}" required />
                     </div>
                       </div>
-                      
+                   <div class="form-group ">
+                    <label for="cname" class="control-label col-lg-2"> ID</label>
+                    <div class="col-lg-10">
+                      <input class=" form-control" name="id_doc" type="text" readonly="" value="${id_doc}" required />
+                    </div>
+                      </div>   
                   <div class="form-group ">
                     <label for="cemail" class="control-label col-lg-2">Name des Kunden</label>
                     <div class="col-lg-10">

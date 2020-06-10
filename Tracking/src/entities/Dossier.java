@@ -8,7 +8,7 @@ public class Dossier {
 	private String nom_cl; 
 	private String type; 
 	private int numTacheEnCour;
-	
+	private String tracking;
 	// date debut premiere tache du dossier
 	private String dateDebut;
 	// date fin derniere tache du dossier
@@ -19,6 +19,12 @@ public class Dossier {
 	private String respo;
 	
 	
+	public String getTracking() {
+		return tracking;
+	}
+	public void setTracking(String tracking) {
+		this.tracking = tracking;
+	}
 	public int getDureeTotal() {
 		return dureeTotal;
 	}

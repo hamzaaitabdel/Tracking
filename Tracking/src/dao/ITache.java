@@ -45,4 +45,5 @@ public interface ITache {
 	public Tache getLastTache(String dateFin);
 	public void editDateFin(int idAkhirTache, String dt);
 	public int TotalVenir(int id_respooo);
+	int getIdbyTracking(String tracking);
 }

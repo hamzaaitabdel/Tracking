@@ -12,11 +12,11 @@ public class sms {
 	public String sendSms() {
 		try {
 			// Construct data
-			String apiKey = "apikey=" + "b7kymC+mP6w-3xymyyVOMmpWBGkhEyMVOqnryi2tb3	";
-			String message = "&message=" + "Benjbara Telecom yora7ibo bikom";
-			String sender = "&sender=" + "Benjbara Telecom";
-			String numbers = "&numbers=" + "212623198124";
-			
+			String apiKey = "apikey=" + "i1GUqz1e2kE-JBN7T2upCytor1d6QoCSajW63LSE4g";
+			String message = "&message=" + "salam ";
+			String sender = "&sender=" + "twam";
+			String numbers = "&numbers=" + "212619860033";
+			//System.out.println("sms sent! ! !");
 			// Send data
 			HttpURLConnection conn = (HttpURLConnection) new URL("https://api.txtlocal.com/send/?").openConnection();
 			String data = apiKey + numbers + message + sender;
@@ -31,8 +31,10 @@ public class sms {
 				stringBuffer.append(line);
 			}
 			rd.close();
-			
+						System.out.println("sms sent! ! !");
+
 			return stringBuffer.toString();
+
 		} catch (Exception e) {
 			System.out.println("Error SMS "+e);
 			return "Error "+e;

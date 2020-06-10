@@ -19,13 +19,30 @@ import entities.Tache;
 public class TacheImpl implements ITache {
 
 	@Override
+	public int getIdbyTracking(String tracking) {
+		Connection conn=DBconnect.getConnection();
+		int id=0;
+		try {
+			PreparedStatement st=conn.prepareStatement("select id_doc from dossier where tracking =?");  
+			st.setString(1,tracking);
+			ResultSet rs=st.executeQuery();
+			if(rs.next()){
+				id=rs.getInt("id_doc");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return id;
+	}
+	@Override
 	public List<Tache> getTache(String search) {
 		List<Tache> cmd = new ArrayList();
 		Connection conn=DBconnect.getConnection();
 		
 		try {
+			int id=getIdbyTracking(search);
 			PreparedStatement st=conn.prepareStatement("select * from Tache where id_doc =? order by dateDebut ASC");  
-			st.setInt(1, Integer.parseInt(search));
+			st.setInt(1,id);
 			ResultSet rs=st.executeQuery();
 			while(rs.next()){
 				Tache c=new Tache();

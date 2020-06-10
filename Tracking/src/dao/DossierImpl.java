@@ -39,13 +39,14 @@ public class DossierImpl implements IDossier {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 		Date date = new Date();
 		try {
-			PreparedStatement st=conn.prepareStatement("insert into Dossier values (?,?,?,?,?)");
+			PreparedStatement st=conn.prepareStatement("insert into Dossier values (?,?,?,?,?,?)");
 			
 			st.setInt(1, d.getId_doc());
 			st.setString(2, d.getNom_cl());
 			st.setString(3, d.getType());
 			st.setInt(4, d.getNumTacheEnCour());
 			st.setString(5,dateFormat.format(date));
+			st.setString(6,d.getTracking());
 			st.executeUpdate();
 			st.close();
 		} catch (SQLException e) {
@@ -219,19 +220,30 @@ public class DossierImpl implements IDossier {
 	}
 
 	@Override
-	public String getIdRandom(int nbr) {
-		//char[] alphabet = "abcdefghijklmnopqrstuvwxyz".toCharArray();
+	public String getIdRandom(int nbr,boolean b) {
+		char[] alphabet = "abcdefghijklmnopqrstuvwxyz".toCharArray();
 		String output="";
-		for(int i=0;i<nbr;i++){
-			int n = (int)(Math.random()*10);
-			output+=n+"";
+		
+		if(b) {
+			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+			Date date = new Date();
+			String day[]=dateFormat.format(date).split("/");
+			output+=(day[0]+day[1]+day[2]);
+			for(int i=0;i<nbr;i++){
+				int n = (int)(Math.random()*alphabet.length);
+				output+=alphabet[n]+"";
+			}
 		}
-		/*
-		for(int i=0;i<nbr;i++){
-			int n = (int)(Math.random()*alphabet.length);
-			output+=alphabet[n]+"";
+		else {
+			for(int i=0;i<nbr;i++){
+				int n = (int)(Math.random()*10);
+				output+=n+"";
+			}
 		}
-		*/
+			
+		
+		
+		
 		return output;
 	}
 

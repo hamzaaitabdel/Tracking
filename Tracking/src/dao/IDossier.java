@@ -13,7 +13,7 @@ public interface IDossier {
 	public void editDossier(Dossier nouveauDossier);
 	public List<Dossier> ListDossierClient(String nom_cl);
 	public Dossier getDosser(int idD);
-	public String getIdRandom(int nbr);
+	public String getIdRandom(int nbr,boolean b);
 	int getAllclient();
 	String getNomCl(int id_dossier);
 	int getRegistredclient();
