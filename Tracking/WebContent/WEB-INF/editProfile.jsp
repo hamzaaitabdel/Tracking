@@ -44,12 +44,12 @@
                     <li class="active">
                         <a class="sidebar-sub-toggle">  Leitung <span class="sidebar-collapse-icon ti-angle-down"></span></a>
                        
-                            <li><a href="http://localhost:8080/Tracking/acceuilClient"><i  class="ti-home" ></i>Startseite</a></li>
+                            <li><a href="http://localhost:8082/Tracking/acceuilClient"><i  class="ti-home" ></i>Startseite</a></li>
                              
                     </li>
-                    <li><a href="http://localhost:8080/Tracking/saved"><i class="ti-view-list-alt"></i> Registrierte Dateien</a></li>
+                    <li><a href="http://localhost:8082/Tracking/saved"><i class="ti-view-list-alt"></i> Registrierte Dateien</a></li>
                 
-                    <li><a href="http://localhost:8080/Tracking/profile"><i class="ti-user"></i>Mein Profil</a></li>
+                    <li><a href="http://localhost:8082/Tracking/profile"><i class="ti-user"></i>Mein Profil</a></li>
                     </ul>
             </div>
         </div>
@@ -58,7 +58,7 @@
     <div class="header">
         <div class="pull-left">
             <div class="logo">
-                <a href="http://localhost:8080/Tracking/Acceuil">
+                <a href="http://localhost:8082/Tracking/Acceuil">
                     <img id="logoImg" src="logo/loogo.png" data-logo_big="logo/loogo.png" data-logo_small="logo/loogoSmall.png" alt="Nixon" />
                 </a>
             </div>
@@ -76,18 +76,18 @@
                         <div class="dropdown-content-heading">
                         <c:if test="${client.premium == false }">
                     <span class="text-left">Wollen Sie mehr?</span>
-                          <p class="trial-day" ><a href="http://localhost:8080/Tracking/premium?id_client=${ client.id_client }">PREMIUM WERDEN</a></p>
+                          <p class="trial-day" ><a href="http://localhost:8082/Tracking/premium?id_client=${ client.id_client }">PREMIUM WERDEN</a></p>
                         </c:if>
                     <c:if test="${client.premium == true }">
                         <span class="text-left">Mein Paket stornieren </span>
-                         <p class="trial-day" ><a href="http://localhost:8080/Tracking/endPremium?id_client=${ client.id_client }"  onclick="return confirm('Möchten Sie Ihr Abonnement wirklich kündigen??')">PREMIUM</a></p>
+                         <p class="trial-day" ><a href="http://localhost:8082/Tracking/endPremium?id_client=${ client.id_client }"  onclick="return confirm('Möchten Sie Ihr Abonnement wirklich kündigen??')">PREMIUM</a></p>
                         </c:if>
                         </div>
                         <div class="dropdown-content-body">
                             <ul>
-                                <li><a href="http://localhost:8080/Tracking/profile"><i class="ti-user"></i> <span>Meine Profil</span></a></li>
-                                <li><a href="http://localhost:8080/Tracking/saved"><i class="ti-write"></i> <span>Meine Dateien</span></a></li>
-                                <li><a href="http://localhost:8080/Tracking/deconnexion"><i class="ti-power-off"></i> <span>Abmelden</span></a></li>
+                                <li><a href="http://localhost:8082/Tracking/profile"><i class="ti-user"></i> <span>Meine Profil</span></a></li>
+                                <li><a href="http://localhost:8082/Tracking/saved"><i class="ti-write"></i> <span>Meine Dateien</span></a></li>
+                                <li><a href="http://localhost:8082/Tracking/deconnexion"><i class="ti-power-off"></i> <span>Abmelden</span></a></li>
                             </ul>
                         </div>
                     </div>

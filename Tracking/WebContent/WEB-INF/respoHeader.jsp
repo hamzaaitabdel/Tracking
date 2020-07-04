@@ -48,7 +48,7 @@
         <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
       </div>
       <!--logo start-->
-      <a href="http://localhost:8080/Tracking/Respo" class="logo"><b>WEB<span>TRACK</span></b></a>
+      <a href="http://localhost:8082/Tracking/Respo" class="logo"><b>WEB<span>TRACK</span></b></a>
       <!--logo end-->
       <div class="nav notify-row" id="top_menu">
         <!--  notification start -->
@@ -83,13 +83,13 @@
               </c:forEach>
               <li>
                
-                <a href="http://localhost:8080/Tracking/tacheEnCours">Alle laufende Aufgaben anzeigen </a>
+                <a href="http://localhost:8082/Tracking/tacheEnCours">Alle laufende Aufgaben anzeigen </a>
               </li>
             </ul>
           </li>
           <!-------------------------------------------------------------------------------------------------------------------------------->
           <li id="header_inbox_bar" class="dropdown">
-            <a data-toggle="dropdown" class="dropdown-toggle" href="http://localhost:8080/Tracking/tacheEnCours">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="http://localhost:8082/Tracking/tacheEnCours">
               <i class="fa fa-envelope-o"></i>
               <span class="badge bg-theme">${ totalAp}</span>
               </a>
@@ -100,7 +100,7 @@
               </li>
              <c:forEach items="${ tachEC}" var="tache">
               <li> 
-              <a href="http://localhost:8080/Tracking/tacheEnCours">
+              <a href="http://localhost:8082/Tracking/tacheEnCours">
               <span class="photo"><img alt="avatar" src="img/doc.jpg"></span>
                   <span class="subject">
                    <span class="from">${ tache.d_type}</span>
@@ -113,7 +113,7 @@
              </c:forEach>
                
              <li>
-                <a href="http://localhost:8080/Tracking/tacheEnCours">Alle laufende Aufgaben anzeigen </a>
+                <a href="http://localhost:8082/Tracking/tacheEnCours">Alle laufende Aufgaben anzeigen </a>
              </li>
             </ul>
           </li>
@@ -131,7 +131,7 @@
               <li>
                 <c:forEach items="${ tachApr}" var="tache"> 
                   <li>
-                <a href="http://localhost:8080/Tracking/tacheApprouver">
+                <a href="http://localhost:8082/Tracking/tacheApprouver">
                   <span class="label label-warning"><i class="fa fa-bell"></i></span>
                   ${ tache.d_type}
                   <span class="small italic">,    ${ tache.libelle} (${ tache.id_doc})</span>
@@ -140,7 +140,7 @@
                </c:forEach>
               </li>
                <li>
-                <a href="http://localhost:8080/Tracking/tacheApprouver">Alle Aufgaben zur Genehmigung anzeigen</a>
+                <a href="http://localhost:8082/Tracking/tacheApprouver">Alle Aufgaben zur Genehmigung anzeigen</a>
               </li>
             </ul>
           </li> 
@@ -149,7 +149,7 @@
       <div class="top-menu">
         <ul class="nav pull-right top-menu">
           <li>
-            <a class="logout" href="http://localhost:8080/Tracking/deconnexionRespo">Abmelden</a>
+            <a class="logout" href="http://localhost:8082/Tracking/deconnexionRespo">Abmelden</a>
           </li>
         </ul>
       </div>

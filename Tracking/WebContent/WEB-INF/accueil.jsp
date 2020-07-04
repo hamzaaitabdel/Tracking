@@ -42,7 +42,7 @@
     <nav class="navbar navbar-expand-lg fixed-top navbar-custom sticky sticky-light" id="navbar">
         <div class="container">
             <!-- LOGO -->
-            <a href="http://localhost:8080/Tracking/Acceuil" class="logo-sticky">
+            <a href="http://localhost:8082/Tracking/Acceuil" class="logo-sticky">
                 <img src="img/logogo.png" alt="" class="logo-dark" height="32" />
                 <img src="img/logogo.png" alt="" class="logo-light" height="32" />
             </a>
@@ -54,19 +54,19 @@
                 </ul>
                 <ul class="navbar-nav">
                      <li class="nav-item active">
-                        <a href="http://localhost:8080/Tracking/Acceuil" class="nav-link">Startseite</a>
+                        <a href="http://localhost:8082/Tracking/Acceuil" class="nav-link">Startseite</a>
                     </li>
                     <c:if test="${session == null }">
                     <li class="nav-item">
-                        <a href="http://localhost:8080/Tracking/loginClient" class="nav-link">Anmelden</a>
+                        <a href="http://localhost:8082/Tracking/loginClient" class="nav-link">Anmelden</a>
                         </li>
                         </c:if>
                     <c:if test="${session != null }">
                     <li class="nav-item">
-                        <a href="http://localhost:8080/Tracking/acceuilClient" class="nav-link">Mein Raum</a>
+                        <a href="http://localhost:8082/Tracking/acceuilClient" class="nav-link">Mein Raum</a>
                         </li>
                     <li class="nav-item">
-                        <a href="http://localhost:8080/Tracking/deconnexion" class="nav-link">Abmelden</a>
+                        <a href="http://localhost:8082/Tracking/deconnexion" class="nav-link">Abmelden</a>
                         </li>
                         </c:if>
                      

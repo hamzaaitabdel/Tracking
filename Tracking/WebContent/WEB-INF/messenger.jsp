@@ -58,7 +58,7 @@
             <div class="group-rom">
              <c:if test="${ messenger.id_respo == id}">
               <div class="first-part odd">${ messenger.nom_respo}</div>
-              <div class="second-part"><a href="http://localhost:8080/Tracking/deleteMsgDbl3ani?id_mess=${ messenger.id_mess}">${ messenger.message}</a></div>
+              <div class="second-part"><a href="http://localhost:8082/Tracking/deleteMsgDbl3ani?id_mess=${ messenger.id_mess}">${ messenger.message}</a></div>
               </c:if>
                <c:if test="${ messenger.id_respo != id}">
                <div class="first-part">${ messenger.nom_respo}</div>

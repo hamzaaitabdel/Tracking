@@ -44,12 +44,12 @@
                     <li class="active">
                         <a class="sidebar-sub-toggle">  Leitung <span class="sidebar-collapse-icon ti-angle-down"></span></a>
                        
-                            <li><a href="http://localhost:8080/Tracking/acceuilClient"><i  class="ti-home" ></i>Startseite</a></li>
+                            <li><a href="http://localhost:8082/Tracking/acceuilClient"><i  class="ti-home" ></i>Startseite</a></li>
                              
                     </li>
-                    <li><a href="http://localhost:8080/Tracking/saved"><i class="ti-view-list-alt"></i> Registrierte Dateien</a></li>
+                    <li><a href="http://localhost:8082/Tracking/saved"><i class="ti-view-list-alt"></i> Registrierte Dateien</a></li>
                 
-                    <li><a href="http://localhost:8080/Tracking/profile"><i class="ti-user"></i>Mein Profil</a></li>
+                    <li><a href="http://localhost:8082/Tracking/profile"><i class="ti-user"></i>Mein Profil</a></li>
                     </ul>
             </div>
         </div>
@@ -58,7 +58,7 @@
     <div class="header">
         <div class="pull-left">
             <div class="logo">
-                <a href="http://localhost:8080/Tracking/Acceuil">
+                <a href="http://localhost:8082/Tracking/Acceuil">
                     <img id="logoImg" src="logo/loogo.png" data-logo_big="logo/loogo.png" data-logo_small="logo/loogoSmall.png" alt="Nixon" />
                 </a>
             </div>
@@ -76,18 +76,18 @@
                         <div class="dropdown-content-heading">
                         <c:if test="${client.premium == false }">
                     <span class="text-left">Wollen Sie mehr?</span>
-                          <p class="trial-day" ><a href="http://localhost:8080/Tracking/premium?id_client=${ client.id_client }">PREMIUM WERDEN</a></p>
+                          <p class="trial-day" ><a href="http://localhost:8082/Tracking/premium?id_client=${ client.id_client }">PREMIUM WERDEN</a></p>
                         </c:if>
                     <c:if test="${client.premium == true }">
                         <span class="text-left">Mein Paket stornieren </span>
-                         <p class="trial-day" ><a href="http://localhost:8080/Tracking/endPremium?id_client=${ client.id_client }"  onclick="return confirm('Möchten Sie Ihr Abonnement wirklich kündigen??')">PREMIUM</a></p>
+                         <p class="trial-day" ><a href="http://localhost:8082/Tracking/endPremium?id_client=${ client.id_client }"  onclick="return confirm('Möchten Sie Ihr Abonnement wirklich kündigen??')">PREMIUM</a></p>
                         </c:if>
                         </div>
                         <div class="dropdown-content-body">
                             <ul>
-                                <li><a href="http://localhost:8080/Tracking/profile"><i class="ti-user"></i> <span>Meine Profil</span></a></li>
-                                <li><a href="http://localhost:8080/Tracking/saved"><i class="ti-write"></i> <span>Meine Dateien</span></a></li>
-                                <li><a href="http://localhost:8080/Tracking/deconnexion"><i class="ti-power-off"></i> <span>Abmelden</span></a></li>
+                                <li><a href="http://localhost:8082/Tracking/profile"><i class="ti-user"></i> <span>Meine Profil</span></a></li>
+                                <li><a href="http://localhost:8082/Tracking/saved"><i class="ti-write"></i> <span>Meine Dateien</span></a></li>
+                                <li><a href="http://localhost:8082/Tracking/deconnexion"><i class="ti-power-off"></i> <span>Abmelden</span></a></li>
                             </ul>
                         </div>
                     </div>
@@ -153,7 +153,7 @@
 												<div class="user-profile-name">${ client.nom }</div>
 												<div class="user-Location"><i class="ti-location-pin"></i> Meknès, Maroc</div>
 												</div>
-												<a  href="http://localhost:8080/Tracking/editProfile"  ><div ><button class="btn btn-primary btn-addon" type="button"><i class="ti-settings"></i>Modifier</button></a></div>
+												<a  href="http://localhost:8082/Tracking/editProfile"  ><div ><button class="btn btn-primary btn-addon" type="button"><i class="ti-settings"></i>Modifier</button></a></div>
 												<div class="custom-tab user-profile-tab">
 													<ul class="nav nav-tabs" role="tablist">
 														<li role="presentation" class="active"><a href="#1" aria-controls="1" role="tab" data-toggle="tab">Über uns</a></li>
@@ -211,7 +211,7 @@
 																<c:if test="${client.premium == false }">
 																<h4>PREMIUM werden, um von einem PREMIUM-Service zu profitieren</h4>
 																<div class="birthday-content">
-											<center>	<a  href="http://localhost:8080/Tracking/premium?id_client=${ client.id_client }"  ><div ><button type="button" class="btn btn-success btn-flat btn-addon m-b-10 m-l-5"><i class="ti-user"></i>PREMIUM WERDEN</button></a></div>
+											<center>	<a  href="http://localhost:8082/Tracking/premium?id_client=${ client.id_client }"  ><div ><button type="button" class="btn btn-success btn-flat btn-addon m-b-10 m-l-5"><i class="ti-user"></i>PREMIUM WERDEN</button></a></div>
 															</center>	</div>
 																</c:if>
 															</div>

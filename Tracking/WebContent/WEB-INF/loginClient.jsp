@@ -39,7 +39,7 @@
                 <div class="container">
                     <!-- Brand -->
                     <div class="navbar-brand">
-                        <a class="navbar-item" href="http://localhost:8080/Tracking/Acceuil">
+                        <a class="navbar-item" href="http://localhost:8082/Tracking/Acceuil">
                             <img src="img/logogo.png" alt="">
                         </a>
             
@@ -71,10 +71,10 @@
                             <!-- Navbar item -->
                             
                             <!-- Navbar item -->
-                            <a class="navbar-item is-slide" href="http://localhost:8080/Tracking/Propos">
+                            <a class="navbar-item is-slide" href="http://localhost:8082/Tracking/Propos">
                                 Über uns
                             </a>
-                            <a class="navbar-item is-slide" href="http://localhost:8080/Tracking/loginAdmin">
+                            <a class="navbar-item is-slide" href="http://localhost:8082/Tracking/loginAdmin">
                                 Administratorbereich
                             </a>
                             
@@ -84,7 +84,7 @@
                         <div class="navbar-end">
                             <!-- Signup button -->
                             <div class="navbar-item">
-                                <a id="#signup-btn" href="http://localhost:8080/Tracking/Acceuil" class="button button-cta btn-outlined is-bold btn-align primary-btn rounded raised">
+                                <a id="#signup-btn" href="http://localhost:8082/Tracking/Acceuil" class="button button-cta btn-outlined is-bold btn-align primary-btn rounded raised">
                                     Acceuil
                                 </a>
                             </div>
@@ -129,7 +129,7 @@
                                             <button class="button button-cta btn-align primary-btn is-fullwidth rounded raised no-lh">Login</button>
                                        </div>
                                     </form>
-                                    <a href="http://localhost:8080/Tracking/forgotPassword"><label>forgot Passwort</label></a>
+                                    <a href="http://localhost:8082/Tracking/forgotPassword"><label>forgot Passwort</label></a>
                                         <label name="msg"></label>
                                 </div>
                             </div>

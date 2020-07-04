@@ -55,7 +55,7 @@
         <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
       </div>
       <!--logo start-->
-      <a href="http://localhost:8080/Tracking/statistics" class="logo"><b>WEB<span>TRACK</span></b></a>
+      <a href="http://localhost:8082/Tracking/statistics" class="logo"><b>WEB<span>TRACK</span></b></a>
       <!--logo end-->
       <div class="nav notify-row" id="top_menu">
         <!--  notification start -->
@@ -66,7 +66,7 @@
       <div class="top-menu">
         <ul class="nav pull-right top-menu">
           <li>
-            <a class="logout" href="http://localhost:8080/Tracking/deconnexion">Abmelden</a>
+            <a class="logout" href="http://localhost:8082/Tracking/deconnexion">Abmelden</a>
           </li>
         </ul>
       </div>
@@ -81,7 +81,7 @@
           </p>
           <h5 class="centered">${admin.nom }</h5>
           <li class="mt">
-            <a href="http://localhost:8080/Tracking/statistics">
+            <a href="http://localhost:8082/Tracking/statistics">
               <i class="fa fa-dashboard"></i>
               <span>Gesamtansicht</span>
               </a>
@@ -93,16 +93,16 @@
               </a>
             <ul class="sub">
               <li>
-                <a href="http://localhost:8080/Tracking/ajoutDoc">Einen Ordner hinzufügen</a>
+                <a href="http://localhost:8082/Tracking/ajoutDoc">Einen Ordner hinzufügen</a>
               </li>
               <li>
-                <a href="http://localhost:8080/Tracking/ajoutRespo">Einen Manager hinzufügen</a>
+                <a href="http://localhost:8082/Tracking/ajoutRespo">Einen Manager hinzufügen</a>
               </li>
               <li>
-                <a href="http://localhost:8080/Tracking/ajoutTache">Verwaltung der Aufgaben</a>
+                <a href="http://localhost:8082/Tracking/ajoutTache">Verwaltung der Aufgaben</a>
               </li>
               <li>
-                <a href="http://localhost:8080/Tracking/statistics">Übersicht</a>
+                <a href="http://localhost:8082/Tracking/statistics">Übersicht</a>
               </li>  
             </ul>
           </li> 
@@ -157,7 +157,7 @@
                   <span class="caret"></span>
                   </button>
                 <ul class="dropdown-menu" role="menu">
-                  <li><a href="http://localhost:8080/Tracking/viewTache?idST=${ dossier.id_doc}">Konsultieren Sie die Aufgaben</a></li>
+                  <li><a href="http://localhost:8082/Tracking/viewTache?idST=${ dossier.id_doc}">Konsultieren Sie die Aufgaben</a></li>
         </div>
                     </td>
                     <c:if test="${dossier.maxTache == dossier.totalTache}">
@@ -193,8 +193,8 @@
 			   </c:if>
 			  </td>
                      <td>
-                     <a href="http://localhost:8080/Tracking/editDoc?id_d=${ dossier.id_doc}"> <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
-                     <a href="http://localhost:8080/Tracking/deleteDoc?id_d=${ dossier.id_doc}"  onclick="return confirm('Voulez vous vraiment supprimer ce dossier?')"><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></a>
+                     <a href="http://localhost:8082/Tracking/editDoc?id_d=${ dossier.id_doc}"> <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
+                     <a href="http://localhost:8082/Tracking/deleteDoc?id_d=${ dossier.id_doc}"  onclick="return confirm('Voulez vous vraiment supprimer ce dossier?')"><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></a>
                       </td>
                       </tr>
                   </c:forEach>
@@ -232,8 +232,8 @@
                     <td>${ responsable.email}</td> 
                      <td>${ responsable.password}</td>
                      <td>
-                     <a href="http://localhost:8080/Tracking/editRespo?id_r=${ responsable.id_respo}"> <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
-                     <a href="http://localhost:8080/Tracking/deleteRespo?id_r=${ responsable.id_respo}"  onclick="return confirm('Voulez vous vraiment supprimer ce responsable?')"><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></a>
+                     <a href="http://localhost:8082/Tracking/editRespo?id_r=${ responsable.id_respo}"> <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
+                     <a href="http://localhost:8082/Tracking/deleteRespo?id_r=${ responsable.id_respo}"  onclick="return confirm('Voulez vous vraiment supprimer ce responsable?')"><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></a>
                       </td>
                  </tr>
                   </c:forEach>
@@ -283,8 +283,8 @@
 			  </c:if>
 			  </td> 
                      <td>
-                     <a href="http://localhost:8080/Tracking/editClient?id_r=${ client.id_client}"> <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
-                     <a href="http://localhost:8080/Tracking/deleteClient?id_r=${ client.id_client}"  onclick="return confirm('Voulez vous vraiment supprimer ce client?')"><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></a>
+                     <a href="http://localhost:8082/Tracking/editClient?id_r=${ client.id_client}"> <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
+                     <a href="http://localhost:8082/Tracking/deleteClient?id_r=${ client.id_client}"  onclick="return confirm('Voulez vous vraiment supprimer ce client?')"><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></a>
                       </td>
                  </tr>
                   </c:forEach>

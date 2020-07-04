@@ -43,10 +43,10 @@
                 </ul>
                 <ul class="navbar-nav">
                      <li class="nav-item active">
-                        <a href="http://localhost:8080/Tracking/Acceuil" class="nav-link">Startseite</a>
+                        <a href="http://localhost:8082/Tracking/Acceuil" class="nav-link">Startseite</a>
                     </li>
                     <li class="nav-item">
-                        <a href="http://localhost:8080/Tracking/login" class="nav-link">Anmelden</a>
+                        <a href="http://localhost:8082/Tracking/login" class="nav-link">Anmelden</a>
                     </li> 
                 </ul>
             </div>

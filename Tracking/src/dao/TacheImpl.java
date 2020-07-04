@@ -8,16 +8,135 @@ import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
+import entities.Client;
+import entities.Dossier;
+import entities.Messenger;
 import entities.Responsable;
 import entities.Tache;
 
 public class TacheImpl implements ITache {
+	private ITache tacheDAO;
+	private IResponsable respoDAO;
+	private IDossier dossierDAO;
+	private IClientmail clientmailDAO;
+	private IClient clientDAO;
+	private IMessage messageDAO;
+	
+	@Override
+	public void GenerationTacheAuto(String id_respofull,String id_doc,String libelle,
+			String dateDebut_,String dateFin_) {
+		tacheDAO = new TacheImpl();
+		respoDAO = new RespoImpl();
+		dossierDAO = new DossierImpl();
+		clientmailDAO = new ClientmailImpl();
+		clientDAO = new ClientImpl();
+		messageDAO = new MessageImpl();
+		
+		try {
+			
+			Dossier d1 = dossierDAO.getDoc(id_doc);
+			String d_nom_cl = d1.getNom_cl();
+			String d_type = d1.getType();
+			Boolean b = false;
+			
+			//date difference
+			int duree=tacheDAO.DateDifference(dateDebut_, dateFin_);  
+			
+			int i = id_respofull.indexOf(' ');
+			String id_respo = id_respofull.substring(0, i);
+			
+			
+			boolean a = false;
+			int id = Integer.parseInt(id_doc);
+			int deutschland = tacheDAO.exist(id);
+			if(deutschland == 0){
+				a=true;
+				
+			    Responsable respo = respoDAO.getRespo(id_respo);
+				String RECIPIENT = respo.getEmail();
+				String USER_NAME = "Tracking.GmbH";
+				 String PASSWORD = "Bachelor."; 
+				
+				        String from = USER_NAME;
+				        String pass = PASSWORD;
+				        String[] to = { RECIPIENT };
+				        String subject = "Bekanntmachung . ";
+				        String body = "Guten Tag, Herr. "+respo.getNom()+". Sie haben die erste Aufgabe der Datei Nummer '"+id_doc+" vom Typ '"+d_type+"' "
+				        		+ "' zu genehmigen und zu vervollständigen. Letzter Termin die '"+dateFin_+"' .";
+				respoDAO.sendFromGMail(from, pass, to, subject, body);
+				String message = "Die erste Aufgabe der Datei "+id+" ist hinzugefügt. (Verantwortlich: "+respo.getNom()+") ";
 
+				Calendar rightNow = Calendar.getInstance();
+				int hour = rightNow.get(Calendar.HOUR_OF_DAY);
+				int minute = rightNow.get(Calendar.MINUTE);
+				String Uhr= "h";
+				String hr = String.valueOf(hour);
+				String min = String.valueOf(minute);
+				if(minute<10){
+					Uhr= hr+":0"+min;
+				}else{
+					Uhr= hr+":"+min;
+				}
+				Messenger msg = new Messenger(id,0,message, null,Uhr);
+				messageDAO.addMsgRespo(msg);
+			}
+			
+			Tache nouvelleTache = new Tache(Integer.parseInt(id_respo) ,id,b
+						,libelle,dateDebut_,dateFin_,d_nom_cl,d_type,0,a,duree);
+			tacheDAO.addTache(nouvelleTache);
+			
+			List<Dossier> dossiers =  dossierDAO.ListDossier();
+			for (Dossier dossier : dossiers) {
+				String dateDebut = tacheDAO.getDatePremiereTache(dossier.getId_doc());
+				String dateFin = tacheDAO.getDateDerniereTache(dossier.getId_doc());
+				int totalTache = tacheDAO.TotalTache(dossier.getId_doc());
+				int maxTache = tacheDAO.MaxTache(dossier.getId_doc());
+				int dureeTotal = tacheDAO.DureeTotal(dossier.getId_doc());
+				String respo = tacheDAO.RespoAdmin(dossier.getId_doc());
+				dossier.setDateDebut(dateDebut);
+				dossier.setDateFin(dateFin);
+				dossier.setTotalTache(totalTache);
+				dossier.setMaxTache(maxTache);
+				dossier.setDureeTotal(dureeTotal);
+				dossier.setRespo(respo);
+				
+			}
+			List<Responsable> respo =  respoDAO.ListRespo();
+			List<Client> clyan =  clientDAO.ListClient();
+			for (Client client : clyan) {
+				String email = clientmailDAO.getMailClient(client.getId_client());
+				client.setEmail(email);
+			}
+			Responsable respoo = respoDAO.getRespo(id_respo);
+			if(deutschland != 0){
+			String message = "Die Datei Nummer "+id+" hat eine neue Aufgabe. (Verantwortlich: "+respoo.getNom()+") ";
+
+			Calendar rightNow = Calendar.getInstance();
+			int hour = rightNow.get(Calendar.HOUR_OF_DAY);
+			int minute = rightNow.get(Calendar.MINUTE);
+			String Uhr= "h";
+			String hr = String.valueOf(hour);
+			String min = String.valueOf(minute);
+			if(minute<10){
+				Uhr= hr+":0"+min;
+			}else{
+				Uhr= hr+":"+min;
+			}
+			Messenger msg = new Messenger(id,0,message, null,Uhr);
+			messageDAO.addMsgRespo(msg);
+			}
+		} catch (Exception e) {
+			
+		} finally {
+		}	
+
+	}
 	@Override
 	public int getIdbyTracking(String tracking) {
 		Connection conn=DBconnect.getConnection();

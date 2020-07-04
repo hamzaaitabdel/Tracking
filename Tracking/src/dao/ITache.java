@@ -46,4 +46,5 @@ public interface ITache {
 	public void editDateFin(int idAkhirTache, String dt);
 	public int TotalVenir(int id_respooo);
 	int getIdbyTracking(String tracking);
+	void GenerationTacheAuto(String id_respofull, String id_doc, String libelle, String dateDebut_, String dateFin_);
 }

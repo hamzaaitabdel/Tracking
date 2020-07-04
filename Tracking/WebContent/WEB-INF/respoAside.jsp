@@ -52,7 +52,7 @@
           <h5 class="centered">${ responsable.nom}</h5>
           <li class="mt">
             
-            <a href="http://localhost:8080/Tracking/Respo">
+            <a href="http://localhost:8082/Tracking/Respo">
               <i class="fa fa-dashboard"></i>
               <span>Aufgabenliste</span>
               </a>
@@ -64,19 +64,19 @@
               </a>
             <ul class="sub">
               <li>
-                <a href="http://localhost:8080/Tracking/tacheEnCours">Zu erledigende Aufgaben</a>
+                <a href="http://localhost:8082/Tracking/tacheEnCours">Zu erledigende Aufgaben</a>
               </li>
               <li>
-                <a href="http://localhost:8080/Tracking/tacheApprouver">Zu genehmigende Aufgaben</a>
+                <a href="http://localhost:8082/Tracking/tacheApprouver">Zu genehmigende Aufgaben</a>
               </li>
               <li>
-                <a href="http://localhost:8080/Tracking/tacheVenir">Kommende Aufgaben</a>
+                <a href="http://localhost:8082/Tracking/tacheVenir">Kommende Aufgaben</a>
               </li>
               <li>
-                <a href="http://localhost:8080/Tracking/tacheFinis">Abgeschlossene Aufgaben</a>
+                <a href="http://localhost:8082/Tracking/tacheFinis">Abgeschlossene Aufgaben</a>
               </li> 
               <li>
-                <a href="http://localhost:8080/Tracking/listMessenger">Austausch mit einem Netzwerk von Kollegen</a>
+                <a href="http://localhost:8082/Tracking/listMessenger">Austausch mit einem Netzwerk von Kollegen</a>
               </li>
             </ul>
           </li> 

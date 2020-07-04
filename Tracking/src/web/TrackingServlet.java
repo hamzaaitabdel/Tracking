@@ -1,12 +1,16 @@
 package web;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.sql.Blob;
+import java.sql.Types;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,11 +38,13 @@ import dao.ISaved;
 import dao.ITache;
 import dao.IadditionalDoc;
 import dao.Igraphinfo;
+import dao.Itypes;
 import dao.MessageImpl;
 import dao.RespoImpl;
 import dao.STIMPL;
 import dao.SavedImpl;
 import dao.TacheImpl;
+import dao.TypeImpl;
 import dao.sms;
 import entities.AdditionalDoc;
 import entities.Admin;
@@ -52,6 +58,7 @@ import entities.Responsable;
 import entities.Saved;
 import entities.SousTache;
 import entities.Tache;
+import entities.Type;
 
 import java.net.*;
 
@@ -83,6 +90,7 @@ public class TrackingServlet extends HttpServlet {
 	private Igraphinfo graphinfoDAO;
 	private IAdmin adminDao;
 	private IadditionalDoc additionalDocDAO;
+	private Itypes typesDAO;
 	HttpSession session;
 	
 	@Override
@@ -99,6 +107,7 @@ public class TrackingServlet extends HttpServlet {
 		graphinfoDAO=new GraphinfoImp();
 		adminDao= new AdminImpl();
 		additionalDocDAO=new AdditionalDocImp();
+		typesDAO=new TypeImpl();
 	}
 
  
@@ -809,6 +818,8 @@ public class TrackingServlet extends HttpServlet {
 		if(request.getServletPath().equals("/ajoutDoc")) {
 			String tracking = dossierDAO.getIdRandom(6,true);
 			int id_doc=Integer.parseInt(dossierDAO.getIdRandom(6,false));
+			List<Type>types=typesDAO.getTypes();
+			request.setAttribute("types", types);	
 			request.setAttribute("tracking", tracking);
 			request.setAttribute("id_doc", id_doc);
 			request.getRequestDispatcher("WEB-INF/addDoc.jsp").forward(request, response);
@@ -823,7 +834,10 @@ public class TrackingServlet extends HttpServlet {
 		if(request.getServletPath().equals("/ajoutTache")) {
 			String id_doc = request.getParameter( "id_doc" );
 			List<Dossier> dossier =  dossierDAO.ListDossier();
+			//was neu ist
+			List<Type>types=typesDAO.getTypes();
 			request.setAttribute("dossier", dossier);	
+			request.setAttribute("types", types);	
 			List<Responsable> respo =  respoDAO.ListRespo();
 			request.setAttribute("responsable", respo);	
 			request.setAttribute("id_doc", id_doc);	
@@ -1630,10 +1644,10 @@ public class TrackingServlet extends HttpServlet {
 					System.out.println("key="+key);
 					String subject="Passwort Trackin Service zurücksetzen";
 					String key2=key+"&email="+email;
-					String link="http://localhost:8080/Tracking/resetPassword?key="+key+"&email="+email;
+					String link="http://localhost:8082/Tracking/resetPassword?key="+key+"&email="+email;
 					String body="Hallo,\r\n"+
 					"Um Ihr Passwort zurückzusetzen, klicken Sie auf den unten stehenden Link\r\n"+
-					"http://localhost:8080/Tracking/resetPassword?key="+key+
+					"http://localhost:8082/Tracking/resetPassword?key="+key+
 					"&email="+email;
 					String nameClient=cl.getNom();
 					String body3="<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\r\n" + 
@@ -1753,7 +1767,7 @@ public class TrackingServlet extends HttpServlet {
 							"                  <td width=\"270\" align=\"left\" style=\"padding:0;Margin:0;\"> \r\n" + 
 							"                   <table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" role=\"presentation\" style=\"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;\"> \r\n" + 
 							"                     <tr style=\"border-collapse:collapse;\"> \r\n" + 
-							"                      <td class=\"es-m-txt-c\" align=\"right\" style=\"padding:0;Margin:0;padding-top:10px;\"><span class=\"es-button-border\" style=\"border-style:solid;border-color:#3D5CA3;background:#FFFFFF;border-width:2px;display:inline-block;border-radius:10px;width:auto;\"><a href=\"http://localhost:8080/Tracking/index.html\" class=\"es-button\" target=\"_blank\" style=\"mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-size:14px;color:#3D5CA3;border-style:solid;border-color:#FFFFFF;border-width:15px 20px 15px 20px;display:inline-block;background:#FFFFFF;border-radius:10px;font-weight:bold;font-style:normal;line-height:17px;width:auto;text-align:center;\">Zuhause</a></span></td> \r\n" + 
+							"                      <td class=\"es-m-txt-c\" align=\"right\" style=\"padding:0;Margin:0;padding-top:10px;\"><span class=\"es-button-border\" style=\"border-style:solid;border-color:#3D5CA3;background:#FFFFFF;border-width:2px;display:inline-block;border-radius:10px;width:auto;\"><a href=\"http://localhost:8082/Tracking/index.html\" class=\"es-button\" target=\"_blank\" style=\"mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-size:14px;color:#3D5CA3;border-style:solid;border-color:#FFFFFF;border-width:15px 20px 15px 20px;display:inline-block;background:#FFFFFF;border-radius:10px;font-weight:bold;font-style:normal;line-height:17px;width:auto;text-align:center;\">Zuhause</a></span></td> \r\n" + 
 							"                     </tr> \r\n" + 
 							"                   </table></td> \r\n" + 
 							"                 </tr> \r\n" + 
@@ -1948,7 +1962,7 @@ public class TrackingServlet extends HttpServlet {
 					String body2="<p><strong>Hello Dear,</strong></p>\r\n" + 
 							"<p><strong>To reset your password, click on the link below</strong></p>\r\n" + 
 							"<p><br></p>\r\n" + 
-							"<a href=\"http://localhost:8080/Tracking/resetPassword?key="+key2+" class=\"myButton\">Reset your password</a>\r\n" + 
+							"<a href=\"http://localhost:8082/Tracking/resetPassword?key="+key2+" class=\"myButton\">Reset your password</a>\r\n" + 
 							"<style>\r\n" + 
 							".myButton {\r\n" + 
 							"  width:80px;\r\n" + 
@@ -2027,7 +2041,7 @@ if(request.getServletPath().equals("/sendrequest")) {
 				 String pass = PASSWORD;
 				respoDAO.sendFromGMail(from, pass,email, subject, body);
 				System.out.println("email sent");
-				response.sendRedirect("http://localhost:8080/Tracking/statistics");
+				response.sendRedirect("http://localhost:8082/Tracking/statistics");
 				//request.getRequestDispatche r("WEB-INF/statistics.jsp").forward(request, response);
 			}
 			if(request.getServletPath().equals("/loginRespo")){
@@ -2530,11 +2544,48 @@ if(request.getServletPath().equals("/sendrequest")) {
 				}
 				Messenger msg = new Messenger(idDoc,0,message, null,Uhr);
 				messageDAO.addMsgRespo(msg);
+				//generation auto des taches
+				
+				int i=1;
+				int duree=4; 
+				System.out.println("id doc hahwa"+idDoc);
+			    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+			    Calendar c=Calendar.getInstance();
+			    Date date = new Date();
+				String debut=sdf.format(date);
+			    c.setTime(date);
+			    c.add(Calendar.DATE,7);
+				String fin=sdf.format(c.getTime());
+				for(int t:typesDAO.IdRespo(type)) {//parcourir les respo d kola type w affectation des tache
+						
+					if(i==1) {
+						System.out.println("ok");
+						Tache nouvelleTache = new Tache(00 ,t,idDoc
+								,false, "tache"+(i++),debut,fin,nomCl,type,0,true,duree);
+						tacheDAO.addTache(nouvelleTache);
+						System.out.println("ok1");
+					}
+					else {
+						System.out.println("no");
+						Tache nouvelleTache = new Tache(00 ,t,idDoc
+								,false, "tache"+(i++),debut,fin,nomCl,type,0,false,duree);
+						tacheDAO.addTache(nouvelleTache);
+						System.out.println("no1");
+					}
+					debut=fin;
+					c.setTime(sdf.parse(debut));
+					c.add(c.DATE,7);
+					fin=sdf.format(c.getTime());
+					//dateDebut_=dateFin_;//date fin l9dima hya debut jdida l respo suivan
+					//c.add(Calendar.DAY_OF_MONTH, 7);
+					//dateFin_=sdf.format(c.getTime());
+					//TODO daba khass nt2ked wach khdam 
+				}
 			} catch (Exception e) {
 				request.setAttribute("erreur", "Bitte überprüfen Sie, ob Sie die Formularfelder korrekt ausgefüllt haben! ");
 				request.getRequestDispatcher("WEB-INF/addDoc.jsp").forward(request, response);
 			} finally {
-				request.getRequestDispatcher("WEB-INF/admin.jsp").forward(request, response);
+				request.getRequestDispatcher("WEB-INF/statistics.jsp").forward(request, response);
 			}	
 	}
 		

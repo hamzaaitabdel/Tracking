@@ -92,9 +92,9 @@
                   <span class="caret"></span>
                   </button>
                 <ul class="dropdown-menu" role="menu">
-                  <li><a  href="http://localhost:8080/Tracking/rollback?id_doc=${ tache.id_doc}&id_tache=${ tache.id_tache}&date_debut=${ tache.dateDebut}"><span class="label label-danger">Anspruch</span></a></li>
-               <li><a  href="http://localhost:8080/Tracking/messenger?id_doc=${ tache.id_doc}"><span class="label label-primary">Messenger</span></a></li>
-                <li><a  href="http://localhost:8080/Tracking/askadditional?id_doc=${ tache.id_doc}&nomClient=${ tache.d_nom_cl}"><span class="label label-primary">zusätzliche Dokumente anordern</span></a></li>
+                  <li><a  href="http://localhost:8082/Tracking/rollback?id_doc=${ tache.id_doc}&id_tache=${ tache.id_tache}&date_debut=${ tache.dateDebut}"><span class="label label-danger">Anspruch</span></a></li>
+               <li><a  href="http://localhost:8082/Tracking/messenger?id_doc=${ tache.id_doc}"><span class="label label-primary">Messenger</span></a></li>
+                <li><a  href="http://localhost:8082/Tracking/askadditional?id_doc=${ tache.id_doc}&nomClient=${ tache.d_nom_cl}"><span class="label label-primary">zusätzliche Dokumente anordern</span></a></li>
                 </ul>
         </div></td>
                    <td>${ tache.libelle}</td>
@@ -109,9 +109,9 @@
                   <span class="caret"></span>
                   </button>
                 <ul class="dropdown-menu" role="menu">
-                  <li><a href="http://localhost:8080/Tracking/viewST?idST=${ tache.id_tache}">Konsultieren</a></li>
+                  <li><a href="http://localhost:8082/Tracking/viewST?idST=${ tache.id_tache}">Konsultieren</a></li>
                   <li class="divider"></li>
-                  <li><a href="http://localhost:8080/Tracking/addST?idST=${ tache.id_tache}">Hinzufügen</a></li>
+                  <li><a href="http://localhost:8082/Tracking/addST?idST=${ tache.id_tache}">Hinzufügen</a></li>
                 </ul>
         </div>
 				

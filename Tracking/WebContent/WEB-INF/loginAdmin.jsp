@@ -32,7 +32,7 @@
                 <div class="container">
                     <!-- Brand -->
                     <div class="navbar-brand">
-                        <a class="navbar-item" href="http://localhost:8080/Tracking/Acceuil">
+                        <a class="navbar-item" href="http://localhost:8082/Tracking/Acceuil">
                             <img src="img/logogo.png" alt="">
                         </a>
             
@@ -64,11 +64,11 @@
                             <!-- Navbar item -->
                             
                             <!-- Navbar item -->
-                            <a class="navbar-item is-slide" href="http://localhost:8080/Tracking/Propos">
+                            <a class="navbar-item is-slide" href="http://localhost:8082/Tracking/Propos">
                                 Über uns
                             </a>
                             
-                            <a class="navbar-item is-slide" href="http://localhost:8080/Tracking/loginRespo">
+                            <a class="navbar-item is-slide" href="http://localhost:8082/Tracking/loginRespo">
                                 Responsablebereich
                             </a>
                         </div>
@@ -77,7 +77,7 @@
                         <div class="navbar-end">
                             <!-- Signup button -->
                             <div class="navbar-item">
-                                <a id="#signup-btn" href="http://localhost:8080/Tracking/Acceuil" class="button button-cta btn-outlined is-bold btn-align primary-btn rounded raised">
+                                <a id="#signup-btn" href="http://localhost:8082/Tracking/Acceuil" class="button button-cta btn-outlined is-bold btn-align primary-btn rounded raised">
                                     Acceuil
                                 </a>
                             </div>

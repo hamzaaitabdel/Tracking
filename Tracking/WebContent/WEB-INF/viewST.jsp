@@ -81,7 +81,7 @@
                   <% i++; %>
                   <tr>
                   <td><%= i  %></td>
-                   <td><a href="http://localhost:8080/Tracking/deleteSTdbsh?idST=${ tache.id_ST}">${ tache.libelle}</a></td>
+                   <td><a href="http://localhost:8082/Tracking/deleteSTdbsh?idST=${ tache.id_ST}">${ tache.libelle}</a></td>
                     </tr>
                     
                     </c:forEach> 

@@ -33,7 +33,7 @@
                 <div class="container">
                     <!-- Brand -->
                     <div class="navbar-brand">
-                        <a class="navbar-item" href="http://localhost:8080/Tracking/Acceuil">
+                        <a class="navbar-item" href="http://localhost:8082/Tracking/Acceuil">
                             <img src="img/logogo.png" alt="">
                         </a>
             
@@ -65,14 +65,14 @@
                             <!-- Navbar item -->
                             
                             <!-- Navbar item -->
-                            <a class="navbar-item is-slide" href="http://localhost:8080/Tracking/CU">
+                            <a class="navbar-item is-slide" href="http://localhost:8082/Tracking/CU">
                                 Benutzer-Bedingung
                             </a>
-                            <a class="navbar-item is-slide" href="http://localhost:8080/Tracking/Propos">
+                            <a class="navbar-item is-slide" href="http://localhost:8082/Tracking/Propos">
                                 Über uns
                             </a>
                             <c:if test="${session != null }">
-                                 <a class="navbar-item is-slide" href="http://localhost:8080/Tracking/acceuilClient">
+                                 <a class="navbar-item is-slide" href="http://localhost:8082/Tracking/acceuilClient">
                                 Mein Raum
                             </a>
                                 </c:if>
@@ -83,12 +83,12 @@
                             <!-- Signup button -->
                             <div class="navbar-item">
                             <c:if test="${session == null }">
-                                <a id="#signup-btn" href="http://localhost:8080/Tracking/loginClient" class="button button-cta btn-outlined is-bold btn-align primary-btn rounded raised">
+                                <a id="#signup-btn" href="http://localhost:8082/Tracking/loginClient" class="button button-cta btn-outlined is-bold btn-align primary-btn rounded raised">
                                     Anmelden
                                 </a>
                                 </c:if>
                                 <c:if test="${session != null }">
-                                <a id="#signup-btn" href="http://localhost:8080/Tracking/deconnexion" class="button button-cta btn-outlined is-bold btn-align primary-btn rounded raised">
+                                <a id="#signup-btn" href="http://localhost:8082/Tracking/deconnexion" class="button button-cta btn-outlined is-bold btn-align primary-btn rounded raised">
                                     Abmelden
                                 </a>
                                 </c:if></a>
@@ -132,7 +132,7 @@
                                 <c:if test="${session != null }">
                                 <c:if test="${saved == false }">
                                
-                           <center> <a  href="http://localhost:8080/Tracking/addSaved?id_doc=${id_doc }&id_client=${id_client }"  ><button type="button" class="btn btn-info btn-flat btn-addon m-b-10 m-l-5"><i class="ti-plus"></i>Speichern</button></a>
+                           <center> <a  href="http://localhost:8082/Tracking/addSaved?id_doc=${id_doc }&id_client=${id_client }"  ><button type="button" class="btn btn-info btn-flat btn-addon m-b-10 m-l-5"><i class="ti-plus"></i>Speichern</button></a>
                             </center>
                                 </c:if> 
                                  </c:if> 
@@ -173,7 +173,7 @@
         <!-- /Pricing tables -->
         
          <div class="has-text-centered pt-80">
-                            <a href="http://localhost:8080/Tracking/details?tracking=${id_doc }" class="button button-cta primary-btn rounded raised">Mehr Informationen</a>
+                            <a href="http://localhost:8082/Tracking/details?tracking=${id_doc }" class="button button-cta primary-btn rounded raised">Mehr Informationen</a>
                         </div>
                         </div>
                         
@@ -205,7 +205,7 @@
                             </div>
                             </div></div>
         <div class="has-text-centered pt-80">
-                            <a href="http://localhost:8080/Tracking/registration?id_doc=${id_doc }" class="button button-cta primary-btn rounded raised">Jetzt anmelden</a>
+                            <a href="http://localhost:8082/Tracking/registration?id_doc=${id_doc }" class="button button-cta primary-btn rounded raised">Jetzt anmelden</a>
                         </div></div> </div>
                      </c:if>
         <c:if test="${session != null }">
@@ -238,7 +238,7 @@
                             </div>
                             </div></div>
         <div class="has-text-centered pt-80">
-                            <a href="http://localhost:8080/Tracking/premium?id_client=${id_client }" class="button button-cta primary-btn rounded raised">PREMIUM WERDEN</a>
+                            <a href="http://localhost:8082/Tracking/premium?id_client=${id_client }" class="button button-cta primary-btn rounded raised">PREMIUM WERDEN</a>
                         </div></div> </div>
                         </c:if>
                          

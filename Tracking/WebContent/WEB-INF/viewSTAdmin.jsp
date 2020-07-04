@@ -48,7 +48,7 @@
         <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
       </div>
       <!--logo start-->
-      <a href="http://localhost:8080/Tracking/statistics" class="logo"><b>WEB<span>TRACK</span></b></a>
+      <a href="http://localhost:8082/Tracking/statistics" class="logo"><b>WEB<span>TRACK</span></b></a>
       <!--logo end-->
       <div class="nav notify-row" id="top_menu">
         <!--  notification start -->
@@ -59,7 +59,7 @@
       <div class="top-menu">
         <ul class="nav pull-right top-menu">
           <li>
-            <a class="logout" href="http://localhost:8080/Tracking/deconnexion">Abmelden</a>
+            <a class="logout" href="http://localhost:8082/Tracking/deconnexion">Abmelden</a>
           </li>
         </ul>
       </div>
@@ -78,7 +78,7 @@
           </p>
           <h5 class="centered">Aymen Benjbara</h5>
           <li class="mt">
-            <a href="http://localhost:8080/Tracking/statistics">
+            <a href="http://localhost:8082/Tracking/statistics">
               <i class="fa fa-dashboard"></i>
               <span>Gesamtansicht</span>
               </a>
@@ -90,13 +90,13 @@
               </a>
             <ul class="sub">
               <li>
-                <a href="http://localhost:8080/Tracking/ajoutDoc">Einen Ordner hinzufügen</a>
+                <a href="http://localhost:8082/Tracking/ajoutDoc">Einen Ordner hinzufügen</a>
               </li>
               <li>
-                <a href="http://localhost:8080/Tracking/ajoutRespo">Einen Manager hinzufügen</a>
+                <a href="http://localhost:8082/Tracking/ajoutRespo">Einen Manager hinzufügen</a>
               </li>
               <li>
-                <a href="http://localhost:8080/Tracking/ajoutTache">Verwaltung der Aufgaben</a>
+                <a href="http://localhost:8082/Tracking/ajoutTache">Verwaltung der Aufgaben</a>
               </li> 
             </ul>
           </li> 
@@ -147,7 +147,7 @@
                   <% i++; %>
                   <tr>
                   <td><%= i  %></td>
-                   <td><a href="http://localhost:8080/Tracking/deleteSTAdmin?idST=${ tache.id_ST}">${ tache.libelle}</a></td>
+                   <td><a href="http://localhost:8082/Tracking/deleteSTAdmin?idST=${ tache.id_ST}">${ tache.libelle}</a></td>
                     </tr>
                     
                     </c:forEach> 

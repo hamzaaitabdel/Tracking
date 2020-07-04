@@ -70,7 +70,7 @@
                                </div>
                            </div>
                        </div>
-                       <a href="http://localhost:8080/Tracking/statistics">
+                       <a href="http://localhost:8082/Tracking/statistics">
                            <img class="img-fluid" src="assets/images/logo1.png" height="130px" width="180px" alt="Theme-Logo" />
                        </a>
                        <a class="mobile-options">
@@ -111,7 +111,7 @@
                                    </li>
                                    <c:forEach items="${additional }" var="additional">
                                           <li >
-                                       <div class="media" onclick="location.href='http://localhost:8080/Tracking/confirmrequest?id_add=${additional.id}';">
+                                       <div class="media" onclick="location.href='http://localhost:8082/Tracking/confirmrequest?id_add=${additional.id}';">
                                            <img class="d-flex align-self-center img-radius" src="assets/images/avatar-2.jpg" alt="Generic placeholder image">
                                            <div class="media-body">
                                                <h5 class="notification-user">${additional.type }</h5>
@@ -134,7 +134,7 @@
                                    
                                    
                                    <li>
-                                       <a href="http://localhost:8080/Tracking/deconnexion">
+                                       <a href="http://localhost:8082/Tracking/deconnexion">
                                        <i  class="ti-layout-sidebar-left"></i> Ausloggen
                                    </a>
                                    </li>
@@ -152,7 +152,7 @@
                             
                             <ul class="pcoded-item pcoded-left-item">
                                 <li class="active">
-                                    <a href="http://localhost:8080/Tracking/statistics">
+                                    <a href="http://localhost:8082/Tracking/statistics">
                                         <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
                                         <span class="pcoded-mtext" data-i18n="nav.dash.main">Instrumententafel</span>
                                         <span class="pcoded-mcaret"></span>
@@ -163,21 +163,21 @@
                             <div class="pcoded-navigatio-lavel" data-i18n="nav.category.forms">Verwaltung</div>
                             <ul class="pcoded-item pcoded-left-item">
                                 <li>
-                                    <a href="http://localhost:8080/Tracking/ajoutDoc">
+                                    <a href="http://localhost:8082/Tracking/ajoutDoc">
                                         <span class="pcoded-micon"><i class="ti-folder"></i><b></b></span>
                                         <span class="pcoded-mtext" data-i18n="nav.form-components.main">Einen Ordner hinzufugen</span>
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="http://localhost:8080/Tracking/ajoutRespo">
+                                    <a href="http://localhost:8082/Tracking/ajoutRespo">
                                         <span class="pcoded-micon"><i class="ti-user"></i><b></b></span>
                                         <span class="pcoded-mtext" data-i18n="nav.form-components.main">Einen Manager hinzufugen</span>
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="http://localhost:8080/Tracking/ajoutTache">
+                                    <a href="http://localhost:8082/Tracking/ajoutTache">
                                         <span class="pcoded-micon"><i class="ti-share"></i><b>FC</b></span>
                                         <span class="pcoded-mtext" data-i18n="nav.form-components.main">Verwaltung der Aufgaben<li>
                                     <a href="bs-basic-table.html">
@@ -575,8 +575,8 @@ font-weight: bolder; right:30px}
 			  </c:if>
 			  </td> 
                      <td>
-                     <a href="http://localhost:8080/Tracking/editClient?id_r=${ client.id_client}"> <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
-                     <a href="http://localhost:8080/Tracking/deleteClient?id_r=${ client.id_client}"  onclick="return confirm('Voulez vous vraiment supprimer ce client?')"><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></a>
+                     <a href="http://localhost:8082/Tracking/editClient?id_r=${ client.id_client}"> <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
+                     <a href="http://localhost:8082/Tracking/deleteClient?id_r=${ client.id_client}"  onclick="return confirm('Voulez vous vraiment supprimer ce client?')"><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></a>
                       </td>
                  </tr>
                   </c:forEach>
@@ -619,7 +619,7 @@ font-weight: bolder; right:30px}
                   <span class="caret"></span>
                   </button>
                 <ul class="dropdown-menu" role="menu">
-                  <li><a href="http://localhost:8080/Tracking/viewTache?idST=${ dossier.id_doc}">Konsultieren Sie die Aufgaben</a></li>
+                  <li><a href="http://localhost:8082/Tracking/viewTache?idST=${ dossier.id_doc}">Konsultieren Sie die Aufgaben</a></li>
         </div>
                     </td>
                     <c:if test="${dossier.maxTache == dossier.totalTache}">
@@ -655,8 +655,8 @@ font-weight: bolder; right:30px}
 			   </c:if>
 			  </td>
                      <td>
-                     <a href="http://localhost:8080/Tracking/editDoc?id_d=${ dossier.id_doc}"> <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
-                     <a href="http://localhost:8080/Tracking/deleteDoc?id_d=${ dossier.id_doc}"  onclick="return confirm('Voulez vous vraiment supprimer ce dossier?')"><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></a>
+                     <a href="http://localhost:8082/Tracking/editDoc?id_d=${ dossier.id_doc}"> <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
+                     <a href="http://localhost:8082/Tracking/deleteDoc?id_d=${ dossier.id_doc}"  onclick="return confirm('Voulez vous vraiment supprimer ce dossier?')"><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></a>
                       </td>
                       </tr>
    </c:forEach>
