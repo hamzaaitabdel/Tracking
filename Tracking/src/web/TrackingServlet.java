@@ -2556,6 +2556,7 @@ if(request.getServletPath().equals("/sendrequest")) {
 			    c.setTime(date);
 			    c.add(Calendar.DATE,7);
 				String fin=sdf.format(c.getTime());
+				int lmodad[]= {7,5,4,6,2};
 				for(int t:typesDAO.IdRespo(type)) {//parcourir les respo d kola type w affectation des tache
 						
 					if(i==1) {
@@ -2574,7 +2575,7 @@ if(request.getServletPath().equals("/sendrequest")) {
 					}
 					debut=fin;
 					c.setTime(sdf.parse(debut));
-					c.add(c.DATE,7);
+					c.add(c.DATE,lmodad[i-2]);
 					fin=sdf.format(c.getTime());
 					//dateDebut_=dateFin_;//date fin l9dima hya debut jdida l respo suivan
 					//c.add(Calendar.DAY_OF_MONTH, 7);
