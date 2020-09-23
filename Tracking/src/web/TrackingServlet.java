@@ -2029,10 +2029,8 @@ if(request.getServletPath().equals("/sendrequest")) {
 				request.getRequestDispatcher("WEB-INF/respo.jsp").forward(request, response);
 			}
 			if(request.getServletPath().equals("/sendemail")) {
-				String emailtab[]=new String[4];
 				String email=request.getParameter("clientEmail");
-				emailtab[0]=email;
-				System.out.println("hi"+emailtab[0]);
+				System.out.println("hi"+email);
 				String body=request.getParameter("body");
 				String subject=request.getParameter("subject");
 				String USER_NAME = "Tracking.GmbH"; 
@@ -2577,6 +2575,8 @@ if(request.getServletPath().equals("/sendrequest")) {
 					c.setTime(sdf.parse(debut));
 					c.add(c.DATE,lmodad[i-2]);
 					fin=sdf.format(c.getTime());
+					System.out.println("debut "+i+":"+debut);
+					System.out.println("fin "+i+":"+fin);
 					//dateDebut_=dateFin_;//date fin l9dima hya debut jdida l respo suivan
 					//c.add(Calendar.DAY_OF_MONTH, 7);
 					//dateFin_=sdf.format(c.getTime());
